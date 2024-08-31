@@ -1,34 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
+typedef struct node1 {
     int data;
-    struct node* next;
-} Node;
+    struct node1* next;
+} node1;
 
-Node* create_Node() {
-    Node* temp = (Node*)malloc(sizeof(Node));
+node1* create_node1() {
+    node1* temp = (node1*)malloc(sizeof(node1));
     int data;
     printf("Enter the data to be inserted: ");
     scanf("%d", &data);
-    temp->data = data;  // Assigning data to the node
+    temp->data = data;  // Assigning data to the node1
     temp->next = NULL;
     return temp;
 }
 
-void Create_ll(Node** head) {
+void Create_ll(node1** head) {
     if (*head == NULL) {
-        *head = create_Node();
+        *head = create_node1();
     } else {
-        Node* temp = *head;
-        while (temp->next != NULL) {  // Traverse to the last node
+        node1* temp = *head;
+        while (temp->next != NULL) {  // Traverse to the last node1
             temp = temp->next;
         }
-        temp->next = create_Node();  // Link the new node at the end
+        temp->next = create_node1();  // Link the new node1 at the end
     }
 }
 
-int isempty(Node* head) {
+int isempty(node1* head) {
     if (head == NULL) {
         printf("The list is empty.\n");
         return 1;
@@ -36,7 +36,7 @@ int isempty(Node* head) {
     return 0;
 }
 
-void display(Node* head) {
+void display(node1* head) {
     if (isempty(head)) {
         return;
     } else {
@@ -48,12 +48,12 @@ void display(Node* head) {
     }
 }
 
-void delete(Node** head, int data) {
+void delete(node1** head, int data) {
     if (isempty(*head)) {
         return;
     } else {
-        Node* temp = *head;
-        Node* prev = NULL;
+        node1* temp = *head;
+        node1* prev = NULL;
 
         if (temp != NULL && temp->data == data) {
             *head = temp->next;  // Changed head
@@ -68,12 +68,12 @@ void delete(Node** head, int data) {
 
         if (temp == NULL) return;  // If data was not found
 
-        prev->next = temp->next;  // Unlink the node from linked list
+        prev->next = temp->next;  // Unlink the node1 from linked list
         free(temp);  // Free memory
     }
 }
 
-int search(Node* head, int key) {
+int search(node1* head, int key) {
     if (isempty(head)) {
         return -1;
     } else {
@@ -91,9 +91,9 @@ int search(Node* head, int key) {
     }
 }
 
-int main() {
+/*int main() {
     int i = 0;
-    Node* head = NULL;
+    node1* head = NULL;
     while (i < 5) {
         Create_ll(&head);
         i++;
@@ -105,4 +105,4 @@ int main() {
     display(head);
 
     return 0;
-}
+}*/

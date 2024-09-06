@@ -164,7 +164,7 @@ void DFS(Graph* G,int start){
     struct node* temp= G->array[cur].head; 
 //backtracking happeing here     
     while (temp!=NULL)
-    {
+    {   //seeing the unvisted node 
         if (!visted[temp->data]) {
             visted[temp->data]=1;
             S.array[S.top++]=temp->data;

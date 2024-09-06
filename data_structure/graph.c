@@ -142,6 +142,39 @@ void bfs(Graph* g, int v, int num) {
     free(q.aary); // Free dynamically allocated memory for the queue
 }
 
+struct stack{
+    int top;
+    int array[];
+};
+
+
+void DFS(Graph* G,int start){
+    struct stack S;
+    int visted[100]={0}; 
+    //added the things to the stack;
+    S.top=0;
+    S.array[S.top++]=G->array[start].head->data;
+   
+    //i want a condition to check to exit once ii have checked every elemnt in the graph ;
+    while(S.top>0){
+    int cur= S.array[--S.top];
+    //then i add the element to the stack until the endof the linked list 
+    printf("%d->",cur);
+    //shift to the next by backtracking the stack
+    struct node* temp= G->array[cur].head; 
+//backtracking happeing here     
+    while (temp!=NULL)
+    {
+        if (!visted[temp->data]) {
+            visted[temp->data]=1;
+            S.array[S.top++]=temp->data;
+            
+        }
+        temp = temp->next;
+
+    
+    }}}
+
 int main() {
     int num_nodes = 5;
     Graph* g = create_graph(num_nodes);

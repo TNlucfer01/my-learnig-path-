@@ -12,7 +12,7 @@ ar=a+=b;
 sr=a-=b;
 mr=c*=a;
 dr=d/=a;
-modr=d%=a;
+modr=d%=a;                            
 System.out.println("============================================================");
 System.out.println("DEVELOPED BY : AATHI S");
 System.out.println("REGISTER NO: 511523205002");

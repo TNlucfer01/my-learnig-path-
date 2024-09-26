@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(TIC_TOE_TAC LANGUAGES C)
+
+add_executable(TIC_TOE_TAC main.c)
+
+include(GNUInstallDirs)
+install(TARGETS TIC_TOE_TAC
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)

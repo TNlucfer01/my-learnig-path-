@@ -40,7 +40,7 @@ def merge(elements, temp, left, mid, right):
         elements[right] = temp[right]
         right -= 1
     
-    print(f"After merging: {elements}")
+    print(f"{elements}")
 
 elements = [5, 3, 7, 8, 1, 2, 9]
 array_size = len(elements)

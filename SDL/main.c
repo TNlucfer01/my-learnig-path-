@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include<stdbool.h>
 
 struct box {
     char array[3][3];
@@ -15,7 +16,9 @@ int drawSymbol(struct box b, SDL_Window* window, SDL_Renderer* renderer);
 void empty_board(char arr[3][3]);
 char get_player(int user);
 int is_filled(struct box b );
+int checkwin(struct box b);
 
+void change_user(struct box* b);
 void draw_thick_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius, int thickness); 
 void empty_board(char arr[3][3]) {
     for (int i = 0; i < 3; i++) {
@@ -25,38 +28,111 @@ void empty_board(char arr[3][3]) {
     }
 }
 
+
+
 int main() {
     struct box board;
-    empty_board(board.array);  // Correctly call the function to fill the array
+    empty_board(board.array); // Initialize the board
+    board.user = 'O'; // Starting player
 
+    // Initialize SDL
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Window* window = SDL_CreateWindow("TIC TAC TOE", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, 0);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    SDL_RenderPresent(renderer);
-    SDL_Delay(2000);
-
-    int r = grid(window, renderer);
-    if (r == 1) {
-        SDL_Log("The grid has been created");
+    // Load welcome message image
+    SDL_Surface* welcome = SDL_LoadBMP("welcome_message.bmp");
+    if (welcome == NULL) {
+        SDL_Log("Failed to load BMP: %s", SDL_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return -1;
     }
 
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, welcome);
+    SDL_FreeSurface(welcome); // Free the surface after creating the texture
+
+    SDL_Rect rimage = {0, 0, 640, 640};
+
+    // Render the welcome message
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, &rimage);
     SDL_RenderPresent(renderer);
-    SDL_Delay(2000);
 
-    // Example: Drawing a symbol (O) at row 1, column 1
-    draw_X(renderer, 1, 1, 640);
 
-    SDL_RenderPresent(renderer);
-    SDL_Delay(8000);
+    // Draw the grid
 
+
+    bool running = true;
+    while (running) {
+        SDL_Event ev;
+        while (SDL_PollEvent(&ev)) {
+            if (ev.type == SDL_QUIT) {
+                running = false;
+            }
+            else{
+                
+                
+                    /* code */
+                
+                
+            if (ev.type == SDL_KEYDOWN) {
+                if (ev.key.keysym.sym==SDLK_RETURN)
+                {
+                        SDL_Delay(2000); // Show welcome message for 2 seconds
+                        SDL_DestroyTexture(texture);
+  grid(window, renderer);                   
+                }
+                
+                int row = -1, col = -1;
+                switch (ev.key.keysym.sym) {
+                    case SDLK_1: row = 0; col = 0; break;
+                    case SDLK_2: row = 0; col = 1; break;
+                    case SDLK_3: row = 0; col = 2; break;
+                    case SDLK_4: row = 1; col = 0; break;
+                    case SDLK_5: row = 1; col = 1; break;
+                    case SDLK_6: row = 1; col = 2; break;
+                    case SDLK_7: row = 2; col = 0; break;
+                    case SDLK_8: row = 2; col = 1; break;
+                    case SDLK_9: row = 2; col = 2; break;
+                    default:
+                        printf("Enter a valid position.\n");
+                        continue;
+                }
+
+                if (board.array[row][col] == ' ') { // Check if cell is empty
+                    if (get_player(board.user) == 1) {
+                        draw_O(renderer, row, col, 640);
+                        board.array[row][col] = 'O';
+                    } else {
+                        draw_X(renderer, row, col, 640);
+                        board.array[row][col] = 'X';
+                    }
+
+                    if (checkwin(board)) {
+                        SDL_Log("We have a winner!");
+                        SDL_Delay(2000); // Delay before closing after win
+                        running = false;
+                    } else {
+                        change_user(&board);
+                    }
+                } else {
+                    SDL_Log("Cell is already occupied. Choose another.");
+                }
+            }
+        }
+
+        SDL_Delay(10); // Control loop speed
+    }}
+
+    // Clean up resources
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
 
     return 0;
 }
-
 int grid(SDL_Window* window, SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // White color
 
@@ -150,7 +226,7 @@ void draw_X(SDL_Renderer* renderer, int row, int col, int window_size) {
     int endY = (row + 1) * cell_size - padding;
 
     // Set the color for the "X"
-    SDL_SetRenderDrawColor(renderer, 255, 10, 120, 255);  // Red color for "X"
+    SDL_SetRenderDrawColor(renderer, 255,255, 255, 255);  // Red color for "X"
 
     // Thickness of the lines
     int thickness = 5;  // Change this value to increase or decrease thickness
@@ -236,8 +312,8 @@ int cur_state(struct box b) {
     }
     return result;
 }
-void change_user(struct box* b){
 //changging the user 
+void change_user(struct box* b){
 if (b->user==1)
 {
     b->user=2;
@@ -247,7 +323,6 @@ else{
 }
 
 }
-
 char get_player(int user){
     //get curent player 
     if (user==1)
@@ -259,4 +334,3 @@ char get_player(int user){
     }
     
 }
-

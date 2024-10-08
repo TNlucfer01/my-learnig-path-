@@ -1,10 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct xox { 
+struct  box { 
+
     char a[3][3];   // Structure to represent the Tic-Tac-Toe board
-    int user;
-    char cuser;  
+    char user;  
 };
 
 /**
@@ -13,8 +13,7 @@ struct xox {
  * Displays the Tic-Tac-Toe board with clear formatting.
  *
  * @param a: The 2D array representing the current state of the board.
- */
-void display(char a[3][3]){
+ */void display(char a[3][3]){
     printf("%c | %c | %c\n", a[0][0], a[0][1], a[0][2]);
     printf("-----------\n");
     printf("%c | %c | %c\n", a[1][0], a[1][1], a[1][2]);
@@ -99,7 +98,8 @@ void decodethein(int a1, int* row, int* col){
  * @param Z: The structure containing the board and current player information.
  * @return: Returns 0 if successful, -1 if the input is invalid.
  */
-int getinput(struct xox* Z){
+int get_input(struct box*  Z){
+
     int status, a1, row, col;
     
     // Get user input
@@ -171,10 +171,11 @@ int isfull(char a[3][3]){
  * @param A: The structure containing the board and current player information.
  * @return: Returns 1 if there's a diagonal win, 0 otherwise.
  */
-int diagnaol_win(struct xox A){
+int diagnaol_win(struct box  A){
+
     char (*a)[3] = A.a;  // Accessing the board from the structure
-    return ((a[0][0] == A.cuser && a[1][1] == A.cuser && a[2][2] == A.cuser) ||
-            (a[0][2] == A.cuser && a[1][1] == A.cuser && a[2][0] == A.cuser));
+    return ((a[0][0] == A.user && a[1][1] == A.user && a[2][2] == A.user) ||
+            (a[0][2] == A.user && a[1][1] == A.user && a[2][0] == A.user));
 }
 
 /**
@@ -185,10 +186,11 @@ int diagnaol_win(struct xox A){
  * @param A: The structure containing the board and current player information.
  * @return: Returns 1 if there's a row win, 0 otherwise.
  */
-int row_win(struct xox A){
+int row_win(struct box A){
+
     char (*a)[3] = A.a;
     for (int i = 0; i < 3; i++){
-        if (a[i][0] == A.cuser && a[i][1] == A.cuser && a[i][2] == A.cuser){
+        if (a[i][0] == A.user && a[i][1] == A.user && a[i][2] == A.user){
             return 1;
         }
     }
@@ -203,10 +205,11 @@ int row_win(struct xox A){
  * @param A: The structure containing the board and current player information.
  * @return: Returns 1 if there's a column win, 0 otherwise.
  */
-int col_win(struct xox A){
+int col_win(struct box A){
+
     char (*a)[3] = A.a;
     for (int i = 0; i < 3; i++){
-        if (a[0][i] == A.cuser && a[1][i] == A.cuser && a[2][i] == A.cuser){
+        if (a[0][i] == A.user && a[1][i] == A.user && a[2][i] == A.user){
             return 1;
         }
     }
@@ -217,12 +220,12 @@ int col_win(struct xox A){
  * Function: is_win_or_draw
  * ------------------------
  * Checks if the current player has won or if the game is a draw.
- *
- * @param B: The structure containing the board and current player information.
+1 * @param B: The structure containing the board and current player information.
  * @return: Returns 1 for win, 2 for draw, 0 if the game continues.
  */
-int is_win_or_draw(struct xox* B){
-    B->cuser = (B->user == 1) ? 'X' : 'O';  // Set current user's character
+int is_win_or_draw(struct box* B){
+
+    B->user = (B->user == 1) ? 'X' : 'O';  // Set current user's character
     
     if (row_win(*B) || col_win(*B) || diagnaol_win(*B)){
         return 1;  // Player wins

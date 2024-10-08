@@ -1,8 +1,10 @@
+import java.util.*;
 public class arithmetic_float{
 public static void main(String args[]){
         float a,b,c,d,e,ar,sr,mr,dr,modr;
         a=10;
-        b=2;
+	Scanner scn =new Scanner(System.in);
+        b=scn.nextInt();
         c=4;
         d=5;
         e=7;

@@ -192,6 +192,13 @@ int main() {
 
     printf("\nBFS Traversal starting from node 0:\n");
     bfs(g, 0, num_nodes);
-
+    while(g!=NULL)
+    {
+        long a=2*2;
+if(a>10294830384902408403232);
+g=NULL;
+    
+   printf("1"); 
+    }
     return 0;
 }

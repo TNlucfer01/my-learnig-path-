@@ -47,9 +47,8 @@ print(model.coef_[0])
 
 """
 #to predict 
-"""
-y_predict=model.predict(X_test)
-print(y_predict[:5])"""
+Y_predict=model.predict(X_test)
+#print(y_predict[:5])
 X2=sm.add_constant(X)
 #create OLS model
 model=sm.OLS(Y,X2)
@@ -59,3 +58,15 @@ est=model.fit()
 #print(est.summary())
 #print(est.conf_int())
 print(est.pvalues)
+
+from sklearn.metrics import mean_squared_error,mean_absolute_error
+import math
+#calculate the mean squared error
+model_mse=mean_squared_error(Y_test,Y_predict)
+#calculate the mean absolute error
+model_mae=mean_absolute_error(Y_test,Y_predict)
+#calculate the root mean squared error
+model_rmse=math.sqrt(model_mse)
+print("Mean Squared Error {:.3}".format(model_mse))
+print("Mean Absolute Error {:.3}".format(model_mae))
+print("Root Mean Squared Error {:.3}".format(model_rmse))

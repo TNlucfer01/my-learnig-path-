@@ -1,9 +1,16 @@
+import java.io.*;
+
+
 public class arithmetic{
-public static void main(String args[]){
+public static void main(String args[])
+throws IOException 
+{
         int a,b,c,d,e,ar,sr,mr,dr,modr;
-        a=10;
+        BufferedReader b1 = new BufferedReader(new InputStreamReader(System.in));
+	a=Integer.parseInt(b1.readLine());
+	b1.skip(9);
         b=2;
-        c=4;
+        c=Integer.parseInt(b1.readLine());
         d=5;
         e=7;
         ar=a+b;

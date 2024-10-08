@@ -1,50 +1,356 @@
-
-
 #include <SDL2/SDL.h>
 #include <stdbool.h>
+#include <stdio.h>
 
-int main(int argc, char* argv[]) {
-    SDL_Init(SDL_INIT_VIDEO);
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 640
+#define LINE_THICKNESS 5
+#define CELL_SIZE (SCREEN_WIDTH / 3)
 
-    SDL_Window* window = SDL_CreateWindow("Keyboard Polling Example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+SDL_Window* window = NULL;
+SDL_Renderer* renderer = NULL;
+SDL_Texture* texture=NULL;
+SDL_Rect imager={0,0,SCREEN_HEIGHT,SCREEN_WIDTH};
+SDL_Surface* surface=NULL;
+typedef struct {
+    int board[3][3];  // 0 = empty, 1 = player1 (X), 2 = player2 (O)
+    int currentPlayer;
+    bool isRunning;
+} GameState;
 
-    bool running = true;
+/* Function Prototypes */
+bool initSDL();
+void closeSDL();
+void handleMouseClick(GameState* gameState, int x, int y);
+void renderGame(GameState* gameState);
+void drawGrid();
+void drawSymbols(GameState* gameState);
+void draw_X(int row, int col);
+void draw_O(int row, int col);
+void draw_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius); 
+void draw_thick_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius, int thickness); 
+int checkWin(GameState* gameState);
+void resetGame(GameState* gameState);
+int isfull(GameState* game);
 
-    // Main loop
-    while (running) {
-        // Poll for events
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                running = false;
+/**
+ *   SDL Initialization 
+ * it creates the window and the renderer for the game 
+ * @return:true if the creation is sucess else false */
+bool initSDL() {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+        return false;
+    }
+    
+    window = SDL_CreateWindow("Tic-Tac-Toe", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+    surface =SDL_LoadBMP("t.bmp");
+    SDL_SetWindowIcon(window,surface);
+
+    if (surface==NULL)
+    {
+        printf(" this is not created ");
+    }
+
+    if (window == NULL) {
+        printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+        return false;
+    }
+
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    surface=SDL_LoadBMP("welcome_message.bmp");
+    texture=SDL_CreateTextureFromSurface(renderer,surface);
+    SDL_FreeSurface(surface);
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer,texture,NULL,&imager);
+    SDL_RenderPresent(renderer);
+    SDL_Delay(2000);
+    if (renderer == NULL) {
+        printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
+        return false;
+    }
+    
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    
+    return true;
+}
+
+/**
+ *   Close SDL and cleanup 
+ * cleaning all the file and closing the program */
+void closeSDL() {
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+}
+
+/** 
+ *  Handle Mouse Click Events
+ * it handeles the mouse click based on the box it have
+ * clicked and print draw the X or O 
+ *  then it also checks for the wins and the draw print the winner 
+ * @param gameState: determine the game results 
+ * @param x: the x axis of the click 
+ * @param y: the y axis of the click  
+ * @return : none */
+void handleMouseClick(GameState* gameState, int x, int y) {
+    int row = y / CELL_SIZE;
+    int col = x / CELL_SIZE;
+
+    if (gameState->board[row][col] == 0) {  // Only allow moves in empty cells
+        gameState->board[row][col] = gameState->currentPlayer;
+
+        if(checkWin(gameState)) {
+            surface=SDL_LoadBMP("tic_win.bmp");
+            texture=SDL_CreateTextureFromSurface(renderer,surface);
+           SDL_FreeSurface(surface);
+           SDL_RenderClear(renderer);
+            SDL_RenderCopy(renderer,texture,NULL,&imager);
+            SDL_RenderPresent(renderer);
+            SDL_Delay(2000);
+            printf("Player %d wins!\n", gameState->currentPlayer);
+            
+            gameState->isRunning = false;  // Stop the game
+        }  
+        else if (isfull(gameState)==1)
+    {
+        surface=SDL_LoadBMP("tic_tac_toe_draw.bmp");
+        texture=SDL_CreateTextureFromSurface(renderer,surface);
+        SDL_FreeSurface(surface);
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, texture, NULL, NULL);
+        SDL_RenderPresent(renderer);
+            SDL_Delay(4000);
+        gameState->isRunning=false;
+    }else {
+            gameState->currentPlayer = (gameState->currentPlayer == 1) ? 2 : 1;  // Switch players
+        } 
+    }
+}
+
+/** 
+ *  Render the entire game (grid and symbols) 
+ * @param gameState: the current game state */
+void renderGame(GameState* gameState) {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_RenderClear(renderer);
+
+    drawGrid();
+    drawSymbols(gameState);
+
+    SDL_RenderPresent(renderer);
+}
+
+/**  Draw the Tic-Tac-Toe Grid 
+ * with 9 cells inn it 
+*/
+void drawGrid() {
+    SDL_SetRenderDrawColor(renderer, 255,255,255, 255);
+    
+    // Vertical lines
+    for (int i = 1; i < 3; ++i) {
+        SDL_RenderDrawLine(renderer, i * CELL_SIZE, 0, i * CELL_SIZE, SCREEN_HEIGHT);
+    }
+    
+    // Horizontal lines
+    for (int i = 1; i < 3; ++i) {
+        SDL_RenderDrawLine(renderer, 0, i * CELL_SIZE, SCREEN_WIDTH, i * CELL_SIZE);
+    }
+}
+
+/**  Draw X and O Symbols 
+ * it draws the x or O in the window based the game state 
+ * @param game state:current game state 
+*/
+void drawSymbols(GameState* gameState) {
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            if (gameState->board[row][col] == 1) {
+                draw_X(row, col);
+            } else if (gameState->board[row][col] == 2) {
+                draw_O(row, col);
             }
         }
+    }
+}
 
-        // Get the current state of the keyboard
-        const Uint8* state = SDL_GetKeyboardState(NULL);
+/**  Draw X Symbol
+ * in the grid
+ * it  draws the x in the window based the game state 
+ * @param row: the row the grid 
+ * @param col: the colum of the grid to draw 
+ */
+void draw_X(int row, int col ) {
+    int cell_size = SCREEN_HEIGHT/ 3;  // Size of each cell
+    int padding = 15;                  // Padding from the edges of the cell
+    int startX = col * cell_size + padding;
+    int startY = row * cell_size + padding;
+    int endX = (col + 1) * cell_size - padding;
+    int endY = (row + 1) * cell_size - padding;
 
-        // Check if certain keys are pressed
-        if (state[SDL_SCANCODE_W]) {
-            SDL_Log("W key is pressed");
+    // Set the color for the "X"
+    SDL_SetRenderDrawColor(renderer, 255,255,255,255);  // Red color for "X"
+
+    // Thickness of the lines
+    int thickness = 5;  // Change this value to increase or decrease thickness
+
+    // Draw diagonal lines to form an "X" with thickness
+    for (int i = -thickness / 2; i <= thickness / 2; i++) {
+        // Top-left to bottom-right diagonal
+        SDL_RenderDrawLine(renderer, startX + i, startY, endX + i, endY);
+        // Bottom-left to top-right diagonal
+        SDL_RenderDrawLine(renderer, startX + i, endY, endX + i, startY);
+    }
+}
+
+/**  Draw O Symbol
+ * in the grid
+ * it  draws the O in the window based the game state 
+ * @param row: the row the grid 
+ * @param col: the colum of the grid to draw 
+ */
+
+void draw_O( int row, int col) {
+    int cell_size = SCREEN_HEIGHT / 3;  // Calculate the size of each cell
+    int centerX = (col * cell_size) + (cell_size / 2);
+    int centerY = (row * cell_size) + (cell_size / 2);
+    int radius = cell_size / 4;  // Adjust the circle's radius to fit in the cell
+
+    draw_thick_circle(renderer, centerX, centerY, radius,5);
+}
+
+/** to draw a thick O
+ * it is called by draw_O
+ */
+void draw_thick_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius, int thickness) {
+    for (int i = 0; i < thickness; ++i) {
+        
+        draw_circle(renderer, centerX, centerY, radius + i);
+        draw_circle(renderer, centerX, centerY, radius - i);
+    }
+
+}
+/** to draw the circle 
+ * it is to  draw a circle in the window
+ * it is called by @func:draw_thick_circle
+ */
+void draw_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius) {
+    int x = radius;
+    int y = 0;
+    int p = 1 - radius;
+
+    // Draw initial points on the circle
+    SDL_RenderDrawPoint(renderer, centerX + x, centerY + y);
+    SDL_RenderDrawPoint(renderer, centerX - x, centerY + y);
+    SDL_RenderDrawPoint(renderer, centerX + y, centerY + x);
+    SDL_RenderDrawPoint(renderer, centerX - y, centerY + x);
+
+    while (x > y) {
+        y++;
+        if (p <= 0) {
+            p = p + 2 * y + 1;
+        } else {
+            x--;
+            p = p + 2 * y - 2 * x + 1;
         }
 
-        if (state[SDL_SCANCODE_S]) {
-            SDL_Log("S key is pressed");
-        }
 
-        if (state[SDL_SCANCODE_ESCAPE]) {
-            running = false;  // Exit the loop if ESCAPE is pressed
-        }
+        // Draw the circle's octants
+        
+        SDL_RenderDrawPoint(renderer, centerX + x, centerY + y);
+        SDL_RenderDrawPoint(renderer, centerX - x, centerY + y);
+        SDL_RenderDrawPoint(renderer, centerX + x, centerY - y);
+        SDL_RenderDrawPoint(renderer, centerX - x, centerY - y);
+        SDL_RenderDrawPoint(renderer, centerX + y, centerY + x);
+        SDL_RenderDrawPoint(renderer, centerX - y, centerY + x);
+        SDL_RenderDrawPoint(renderer, centerX + y, centerY - x);
+        SDL_RenderDrawPoint(renderer, centerX - y, centerY - x);
+    }
+}
 
-        // Add a delay to prevent overloading the CPU
-        SDL_Delay(100);
+
+/** it is check wheter the game is finsihed or not 
+ * @returns 1 if win else  0 draw
+ */ 
+int checkWin(GameState* gameState) {
+    int (*b)[3] = gameState->board;
+    
+    // Check rows and columns
+    for (int i = 0; i < 3; i++) {
+        if ((b[i][0] == b[i][1] && b[i][1] == b[i][2] && b[i][0] != 0) ||
+            (b[0][i] == b[1][i] && b[1][i] == b[2][i] && b[0][i] != 0)) {
+            return gameState->currentPlayer;
+        }
+    }
+    
+    // Check diagonals
+    if ((b[0][0] == b[1][1] && b[1][1] == b[2][2] && b[0][0] != 0) ||
+        (b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2] != 0)) {
+        return gameState->currentPlayer;
+    }
+
+    
+    return 0;  // No winner yet
+}
+/**
+ * this function is used to ckeck for draw 
+ * @return:1 if the board is full 
+ * @param gameState :  the current state of the game
+ * 
+ */
+int isfull(GameState* game){
+    int (*a)[3]=game->board;
+    int c = 0;
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (a[i][j] == 1||a[i][j]==2) {
+                c++;
             }
-        
-            // Clean up SDL resources
-            SDL_DestroyRenderer(renderer);
-            SDL_DestroyWindow(window);
-            SDL_Quit();
-        
-            return 0;
         }
+    }
+    return (c == 9);  // Returns 1 if board is full
+}
+
+
+/**  Reset the game state 
+ * it resets the board ans the game  state
+*/
+void resetGame(GameState* gameState) {
+    gameState->currentPlayer = 1;
+    gameState->isRunning = true;
+
+    for (int row = 0; row < 3; ++row) {
+        for (int col = 0; col < 3; ++col) {
+            gameState->board[row][col] = 0;
+        }
+    }
+}
+
+/* Main Function */
+int main(int argc, char* args[]) {
+    if (!initSDL()) {
+        printf("Failed to initialize!\n");
+        return -1;
+    }
+    
+    GameState gameState;
+    resetGame(&gameState);
+    
+    while (gameState.isRunning) {
+        SDL_Event e;
+        while (SDL_PollEvent(&e) != 0) {
+            if (e.type == SDL_QUIT) {
+                gameState.isRunning = false;
+            } else if (e.type == SDL_MOUSEBUTTONDOWN) {
+                int x, y;
+                SDL_GetMouseState(&x, &y);
+                handleMouseClick(&gameState, x, y);
+            }
+        }
+        
+        renderGame(&gameState);
+    }
+
+    closeSDL();
+    return 0;
+}

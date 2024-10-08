@@ -1,13 +1,17 @@
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include<stdbool.h>
-
 struct box {
     char array[3][3];
     int user;
 };
 
+int is_filled(struct box b); 
 // Function prototypes
+void display(char a[3][3]);
+int checkwin(struct box* b) ;
+int is_win_draw(struct box* b, SDL_Renderer* renderer,SDL_Texture* texture);
+
 void draw_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius); 
 int grid(SDL_Window* window, SDL_Renderer* renderer);
 void draw_O(SDL_Renderer* renderer, int row, int col, int window_size);
@@ -15,15 +19,14 @@ void draw_X(SDL_Renderer* renderer, int row, int col, int window_size);
 int drawSymbol(struct box b, SDL_Window* window, SDL_Renderer* renderer);
 void empty_board(char arr[3][3]);
 char get_player(int user);
-int is_filled(struct box b );
-int checkwin(struct box b);
+//int is_filled(struct box b );
 
 void change_user(struct box* b);
 void draw_thick_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius, int thickness); 
 void empty_board(char arr[3][3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            arr[i][j] = '-'; // Initialize the board with some default value (e.g., '-')
+            arr[i][j] = ' '; // Initialize the board with some default value (e.g., '-')
         }
     }
 }
@@ -33,14 +36,12 @@ void empty_board(char arr[3][3]) {
 int main() {
     struct box board;
     empty_board(board.array); // Initialize the board
-    board.user = 'O'; // Starting player
+    board.user = 1; // Starting player
 
-    // Initialize SDL
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Window* window = SDL_CreateWindow("TIC TAC TOE", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, 0);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    // Load welcome message image
     SDL_Surface* welcome = SDL_LoadBMP("welcome_message.bmp");
     if (welcome == NULL) {
         SDL_Log("Failed to load BMP: %s", SDL_GetError());
@@ -55,15 +56,12 @@ int main() {
 
     SDL_Rect rimage = {0, 0, 640, 640};
 
-    // Render the welcome message
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, texture, NULL, &rimage);
     SDL_RenderPresent(renderer);
-
-
-    // Draw the grid
-
-
+ 
+    
+int a =1;
     bool running = true;
     while (running) {
         SDL_Event ev;
@@ -71,66 +69,66 @@ int main() {
             if (ev.type == SDL_QUIT) {
                 running = false;
             }
-            else{
-                
-                
-                    /* code */
-                
-                
-            if (ev.type == SDL_KEYDOWN) {
-                if (ev.key.keysym.sym==SDLK_RETURN)
-                {
-                        SDL_Delay(2000); // Show welcome message for 2 seconds
-                        SDL_DestroyTexture(texture);
-  grid(window, renderer);                   
-                }
-                
+            else//(ev.type==SDL_KEYDOWN)
+            {       
+                if(a=1) {grid(window, renderer);  
+                     // Show welcome message for 2 second
+                 a=2;}
+                        SDL_RenderPresent(renderer);                
+
                 int row = -1, col = -1;
-                switch (ev.key.keysym.sym) {
-                    case SDLK_1: row = 0; col = 0; break;
-                    case SDLK_2: row = 0; col = 1; break;
-                    case SDLK_3: row = 0; col = 2; break;
-                    case SDLK_4: row = 1; col = 0; break;
-                    case SDLK_5: row = 1; col = 1; break;
-                    case SDLK_6: row = 1; col = 2; break;
-                    case SDLK_7: row = 2; col = 0; break;
-                    case SDLK_8: row = 2; col = 1; break;
-                    case SDLK_9: row = 2; col = 2; break;
+                switch (ev.key.keysym.scancode) {
+                    case SDL_SCANCODE_1: row = 0; col = 0; break;
+                    case SDL_SCANCODE_2: row = 0; col = 1; break;
+                    case SDL_SCANCODE_3: row = 0; col = 2; break;
+                    case SDL_SCANCODE_4: row = 1; col = 0; break;
+                    case SDL_SCANCODE_5: row = 1; col = 1; break;
+                    case SDL_SCANCODE_6: row = 1; col = 2; break;
+                    case SDL_SCANCODE_7: row = 2; col = 0; break;
+                    case SDL_SCANCODE_8: row = 2; col = 1; break;
+                    case SDL_SCANCODE_9: row = 2; col = 2; break;
                     default:
-                        printf("Enter a valid position.\n");
                         continue;
                 }
 
-                if (board.array[row][col] == ' ') { // Check if cell is empty
-                    if (get_player(board.user) == 1) {
+                if (board.array[row][col] ==' ') { // Check if cell is empty
+                    if (board.user== 1) {
                         draw_O(renderer, row, col, 640);
                         board.array[row][col] = 'O';
-                    } else {
+                        SDL_Log(" this is O block ");
+                    }
+                    else {
                         draw_X(renderer, row, col, 640);
                         board.array[row][col] = 'X';
+                        SDL_Log("this is X block ");
                     }
+                    if (!checkwin(&board) == 1) {
+                    SDL_Log("We have a winner!");
+                    SDL_Delay(2000);  // Delay before closing
+                    running = false;
+                    } 
+                    else if (checkwin(&board) == 0) {
+                    SDL_Log("It's a draw!");
+                    SDL_Delay(2000);  // Delay before closing
+                    running = false;
+                    } 
+                    else {
+                    change_user(&board);  // Switch to the next player
 
-                    if (checkwin(board)) {
-                        SDL_Log("We have a winner!");
-                        SDL_Delay(2000); // Delay before closing after win
-                        running = false;
-                    } else {
-                        change_user(&board);
-                    }
-                } else {
+                            }
+                    }else {
                     SDL_Log("Cell is already occupied. Choose another.");
-                }
-            }
+                
+            
+            }   
         }
-
         SDL_Delay(10); // Control loop speed
     }}
-
+    SDL_Delay(2000);
     // Clean up resources
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
-
     return 0;
 }
 int grid(SDL_Window* window, SDL_Renderer* renderer) {
@@ -176,14 +174,7 @@ void draw_thick_circle(SDL_Renderer* renderer, int centerX, int centerY, int rad
     }
 
 }
-void draw_thick_X(SDL_Renderer* renderer,int row,int col,int thickness,int window_size){
-    for (int i = 0; i < thickness; i++)
-    {
-        draw_X(renderer,row,col,window_size);
-        
-    }
-    
-}
+
 void draw_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius) {
     int x = radius;
     int y = 0;
@@ -203,9 +194,6 @@ void draw_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius) {
             x--;
             p = p + 2 * y - 2 * x + 1;
         }
-
-
-        // Draw the circle's octants
         
         SDL_RenderDrawPoint(renderer, centerX + x, centerY + y);
         SDL_RenderDrawPoint(renderer, centerX - x, centerY + y);
@@ -217,6 +205,137 @@ void draw_circle(SDL_Renderer* renderer, int centerX, int centerY, int radius) {
         SDL_RenderDrawPoint(renderer, centerX - y, centerY - x);
     }
 }
+
+/**
+ * Function: row_win
+ * -----------------
+ * Checks for row-wise win.
+ *
+ * @param A: The structure containing the board and current player information.
+ * @return: Returns 1 if there's a row win, 0 otherwise.
+ */
+int horizontal_win(struct box b) {
+    char i = get_player(b.user);
+    if ((b.array[0][0] == i && b.array[0][1] == i && b.array[0][2] == i)||
+        (b.array[1][0] == i && b.array[1][1] == i && b.array[1][2] == i)||
+        (b.array[2][0] == i && b.array[2][1] == i && b.array[2][2] == i)){
+        return 1;
+    }
+    return 0;  // No win detected
+}
+
+/**
+ * Function: diagnaol_win
+ * ----------------------
+ * Checks for diagonal win.
+ *
+ * @param A: The structure containing the board and current player information.
+ * @return: Returns 1 if there's a diagonal win, 0 otherwise.
+ */
+int diag_win(struct box b) {
+    char i = get_player(b.user);
+    if ((b.array[0][0] == i && b.array[1][1] == i && b.array[2][2] == i) ||
+        (b.array[0][2] == i && b.array[1][1] == i && b.array[2][0] == i)) {
+        return 1;
+  }
+  return 0;  // No win detected
+}
+
+
+int ver_win(struct box b) {
+    char i = get_player(b.user);
+   if ((b.array[0][0] == i && b.array[1][0] == i && b.array[2][0] == i) ||
+      (b.array[0][1] == i && b.array[1][1] == i && b.array[2][1] == i) ||
+        (b.array[0][2] == i && b.array[1][2] == i && b.array[2][2] == i)) {
+        return 1;
+    }
+  return 0;  // No win detected
+}
+
+
+
+int is_filled(struct box b) {
+   int count = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (b.array[i][j] == 'O' || b.array[i][j] == 'X') {
+                count++;
+            }
+      }
+   }
+    return (count == 9) ? 1 : 0;  // Return 1 if the board is filled, otherwise 0
+}
+
+void change_user(struct box* b) {
+  if (b->user == 1) {
+        b->user = 2;
+    } else {
+       b->user = 1;
+  }
+}
+char get_player(int user){
+    if (user==1)
+    {
+        return 1;
+   }
+  else{
+        return 2;
+    }
+    
+}
+
+/**
+ Function: display
+ * -----------------
+ * Displays the Tic-Tac-Toe board with clear formatting.
+
+ @param a: The 2D array representing the current state of the board.
+ */void display(char a[3][3]){
+    printf("%c | %c | %c\n", a[0][0], a[0][1], a[0][2]);
+    printf("-----------\n");
+    printf("%c | %c | %c\n", a[1][0], a[1][1], a[1][2]);
+    printf("-----------\n");
+    printf("%c | %c | %c\n", a[2][0], a[2][1], a[2][2]);
+}
+
+
+
+int is_win_draw(struct box* b, SDL_Renderer* renderer,SDL_Texture* texture){
+    b->user=(b->user==1)?'X':'O';
+    if (horizontal_win(*b)||ver_win(*b)||diag_win(*b))
+    {
+        return 1;       SDL_Surface* s =SDL_LoadBMP("tic.bmp");
+ SDL_Rect rimage = {0, 0, 640, 640};    
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, &rimage);
+    SDL_RenderPresent(renderer);
+ 
+    }
+    else{
+        return 0;
+    }
+    return 0;
+    
+}
+
+
+int checkwin(struct box* gameState) {
+    char (*b)[3] = gameState->array;
+    
+    for (int i = 0; i < 3; i++) {
+        if ((b[i][0] == b[i][1] && b[i][1] == b[i][2] && b[i][0] != 0) ||
+            (b[0][i] == b[1][i] && b[1][i] == b[2][i] && b[0][i] != 0)) {
+            return gameState->user;
+        }
+    }
+    
+    if ((b[0][0] == b[1][1] && b[1][1] == b[2][2] && b[0][0] != 0) ||
+        (b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2] != 0)) {
+        return gameState->user;
+    }
+    
+    return 0;  // No winner yet
+}
 void draw_X(SDL_Renderer* renderer, int row, int col, int window_size) {
     int cell_size = window_size / 3;  // Size of each cell
     int padding = 15;                  // Padding from the edges of the cell
@@ -225,112 +344,12 @@ void draw_X(SDL_Renderer* renderer, int row, int col, int window_size) {
     int endX = (col + 1) * cell_size - padding;
     int endY = (row + 1) * cell_size - padding;
 
-    // Set the color for the "X"
     SDL_SetRenderDrawColor(renderer, 255,255, 255, 255);  // Red color for "X"
-
-    // Thickness of the lines
     int thickness = 5;  // Change this value to increase or decrease thickness
-
-    // Draw diagonal lines to form an "X" with thickness
     for (int i = -thickness / 2; i <= thickness / 2; i++) {
-        // Top-left to bottom-right diagonal
         SDL_RenderDrawLine(renderer, startX + i, startY, endX + i, endY);
-        // Bottom-left to top-right diagonal
         SDL_RenderDrawLine(renderer, startX + i, endY, endX + i, startY);
     }
 }
 
-int horizontal_win(struct box b) {
-    char i = get_player(b.user);
-    if ((b.array[0][0] == i && b.array[0][1] == i && b.array[0][2] == i) ||
-        (b.array[1][0] == i && b.array[1][1] == i && b.array[1][2] == i) ||
-        (b.array[2][0] == i && b.array[2][1] == i && b.array[2][2] == i)) {
-        return 1;
-    }
-    return 0;  // No win detected
-}
 
-int diag_win(struct box b) {
-    char i = get_player(b.user);
-    if ((b.array[0][0] == i && b.array[1][1] == i && b.array[2][2] == i) ||
-        (b.array[0][2] == i && b.array[1][1] == i && b.array[2][0] == i)) {
-        return 1;
-    }
-    return 0;  // No win detected
-}
-
-
-int ver_win(struct box b) {
-    char i = get_player(b.user);
-    if ((b.array[0][0] == i && b.array[1][0] == i && b.array[2][0] == i) ||
-        (b.array[0][1] == i && b.array[1][1] == i && b.array[2][1] == i) ||
-        (b.array[0][2] == i && b.array[1][2] == i && b.array[2][2] == i)) {
-        return 1;
-    }
-    return 0;  // No win detected
-}
-
-
-
-
-int checkwin(struct box b){
-    if (!is_filled(b))
-    {
-        return -1;
-    }
-    
-    else if (ver_win(b)||horizontal_win(b)||diag_win(b))
-    {
-        return 1;
-    }
-    else{
-    SDL_Log(" the game is draw ");
-    return 0;
-    }
-    
-//ckecking win
-}
-int is_filled(struct box b) {
-    int count = 0;
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            if (b.array[i][j] == 'O' || b.array[i][j] == 'X') {
-                count++;
-            }
-        }
-    }
-    return (count == 9) ? 1 : 0;  // Return 1 if the board is filled, otherwise 0
-}
-int cur_state(struct box b) {
-    int result = checkwin(b);
-    if (result == 1) {
-        SDL_Log("Player %d wins!", b.user);
-    } else if (result == 0) {
-        SDL_Log("It's a draw!");
-    } else {
-        SDL_Log("Game ongoing.");
-    }
-    return result;
-}
-//changging the user 
-void change_user(struct box* b){
-if (b->user==1)
-{
-    b->user=2;
-}
-else{
-    b->user=1;
-}
-
-}
-char get_player(int user){
-    //get curent player 
-    if (user==1)
-    {
-        return 'O';
-    }
-    else{
-        return 'X';
-    }
-    
-}

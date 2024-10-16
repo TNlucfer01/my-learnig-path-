@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Tic Tac Toe
+Icon=/home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/assets/image/t.bmp  # Make sure you have an icon
+Exec=/usr/games/tic_tac_toe            # The path to your game binary
+Categories=Game;
+Terminal=false

@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "/home/darkemperor/aathi/my-learnig-path-/TIC_TOE_TAC"
+    "cmake.sourceDirectory": "/home/darkemperor/aathi/my-learnig-path-/TIC_TOE_TAC",
+    "files.associations": {
+        "sdl.h": "c"
+    }
 }

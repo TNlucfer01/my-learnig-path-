@@ -14,13 +14,14 @@
                 "/usr/include/atk-1.0",
                 "/usr/include/pixman-1",
                 "/usr/include/freetype2",
-                "/usr/include/libpng16"
+                "/usr/include/libpng16",
+                "${workspaceFolder}/TIC_TAC_TOE/usr/share/doc/SDL"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "windows-clang-x64"
         }
     ],
     "version": 4

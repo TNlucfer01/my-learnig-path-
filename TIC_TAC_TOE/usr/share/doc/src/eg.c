@@ -1,25 +1,27 @@
-
-
-
-#include <SDL2/SDL.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include<SDL2/SDL.h>
+#include <SDL2/SDL_main.h>
+
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 640
 #define LINE_THICKNESS 5
-#define CELL_SIZE (SCREEN_WIDTH / 3)
+#define CELL_SIZE (SCREEN_WIDTH/3)
 
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 SDL_Texture* texture=NULL;
 SDL_Rect imager={0,0,SCREEN_HEIGHT,SCREEN_WIDTH};
 SDL_Surface* surface=NULL;
+
+
 typedef struct {
     int board[3][3];  // 0 = empty, 1 = player1 (X), 2 = player2 (O)
     int currentPlayer;
     bool isRunning;
 } GameState;
+
 
 /* Function Prototypes */
 bool initSDL();
@@ -353,3 +355,13 @@ int main(int argc, char* args[]) {
     closeSDL();
     return 0;
 }
+
+
+
+#ifdef _WIN32
+#include <windows.h>
+
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    return main(__argc, __argv);
+}
+#endif

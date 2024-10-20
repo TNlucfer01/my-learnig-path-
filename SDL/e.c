@@ -1,8 +1,7 @@
-#include<SDL2/SDL.h>
+#ifdef _WIN32
+#include <windows.h>
 
-int main(){
-SDL_Window* w=SDL_CreateWindow("first window ",200,200,800,800,0);
-SDL_Renderer* R=SDL_CreateRenderer(w,0,0);
-SDL_Texture* T=SDL_CreateTexture(R,SDL_PIXELFORMAT_RGBA8888,0,800,800);
-SDL_Delay(8000);
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    return main(__argc, __argv);
 }
+#endif

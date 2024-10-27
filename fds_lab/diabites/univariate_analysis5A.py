@@ -14,11 +14,11 @@ df=pd.read_csv("/home/darkemperor/aathi/my-learnig-path-/fds_lab/diabites/diabet
 
 #to calcilate mean
 
-'''print("Mean of Pregnancies:%f" %df ['Pregnancies'].mean())
+print("Mean of Pregnancies:%f" %df ['Pregnancies'].mean())
 print("Mean of Blood Pressure:%f" %df ['BloodPressure'].mean())
 print("Mean of Glucose:%f" %df ['Glucose'].mean())
 print("Mean of Age:%f" %df ['Age'].mean())
-'''
+
 
 #calculate median 
 '''print("Median of Pregnancies:%f" %df ['Pregnancies'].median())

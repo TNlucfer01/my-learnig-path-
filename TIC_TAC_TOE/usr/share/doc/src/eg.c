@@ -1,8 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include<SDL2/SDL.h>
-#include <SDL2/SDL_main.h>
-
+#include<SDL2/SDL_test_font.h>
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 640
@@ -72,6 +71,7 @@ bool initSDL() {
     }
     
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    
     
     return true;
 }
@@ -326,8 +326,41 @@ void resetGame(GameState* gameState) {
     }
 }
 
+
+int playagain(GameState* game){   
+
+SDL_Window* newwin=SDL_CreateWindow("would you like to restart the game ",0,0,340,340,0);
+SDL_Renderer* rendere=SDL_CreateRenderer(newwin,1,SDL_WINDOWPOS_CENTERED);
+SDL_RenderPresent(rendere);
+SDL_Surface* image=SDL_LoadBMP("/home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/usr/share/doc/assets/image/yes.bmp");
+SDL_Texture* text=SDL_CreateTextureFromSurface(rendere,image);
+SDL_Rect rect={0,0,340,340};
+SDL_RenderCopy(rendere,text,&rect,&rect);
+SDL_RenderPresent(rendere);
+SDL_RenderPresent(rendere);
+SDL_Event event;
+while (SDL_WaitEvent(&event)) {
+    if (event.type == SDL_QUIT) {
+        return 0;
+        }
+        if (event.type == SDL_KEYDOWN) {
+            if (event.key.keysym.sym == SDLK_y) {
+                resetGame(game);
+                return 1;
+                }
+                if (event.key.keysym.sym == SDLK_n) {
+                    return 0;
+                    }
+                    }
+                    SDL_Delay(100);
+                    }
+                    SDL_DestroyRenderer(rendere);
+                    SDL_DestroyWindow(newwin);
+                    return 0;
+
+}
 /* Main Function */
-int main(int argc, char* args[]) {
+/*int main(int argc, char* args[]) {
     if (!initSDL()) {
         printf("Failed to initialize!\n");
         return -1;
@@ -354,6 +387,13 @@ int main(int argc, char* args[]) {
 
     closeSDL();
     return 0;
+}*/
+int main(int argc,char* args[]){
+    GameState* g=NULL;
+  SDL_Init(SDL_INIT_EVERYTHING);
+  
+    playagain(g);
+    closeSDL();
 }
 
 

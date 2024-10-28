@@ -327,45 +327,86 @@ void resetGame(GameState* gameState) {
 }
 
 
-int playagain(GameState* game){   
 
-SDL_Window* newwin=SDL_CreateWindow("would you like to restart the game ",0,0,340,340,0);
-SDL_Renderer* rendere=SDL_CreateRenderer(newwin,1,SDL_WINDOWPOS_CENTERED);
-SDL_RenderPresent(rendere);
-SDL_Surface* image=SDL_LoadBMP("/home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/usr/share/doc/assets/image/yes.bmp");
-SDL_Texture* text=SDL_CreateTextureFromSurface(rendere,image);
-SDL_Rect rect={0,0,340,340};
-SDL_RenderCopy(rendere,text,&rect,&rect);
-SDL_RenderPresent(rendere);
-SDL_RenderPresent(rendere);
-SDL_Event event;
-while (SDL_WaitEvent(&event)) {
-    if (event.type == SDL_QUIT) {
+int playagain(GameState* game) {   
+    SDL_Window* newwin = SDL_CreateWindow(
+        "Would you like to restart the game?",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        340,
+        340,
+        0
+    );
+
+    if (!newwin) {
+        printf("Could not create window: %s\n", SDL_GetError());
         return 0;
+    }
+
+    SDL_Renderer* renderer = SDL_CreateRenderer(newwin, -1, SDL_RENDERER_ACCELERATED);
+    if (!renderer) {
+        printf("Could not create renderer: %s\n", SDL_GetError());
+        SDL_DestroyWindow(newwin);
+        return 0;
+    }
+
+    SDL_Surface* image = SDL_LoadBMP("/home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/usr/share/doc/assets/image/yes.bmp");
+    if (!image) {
+        printf("Could not load image: %s\n", SDL_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(newwin);
+        return 0;
+    }
+
+    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, image);
+    SDL_FreeSurface(image);  // Free the surface after creating the texture
+    if (!texture) {
+        printf("Could not create texture: %s\n", SDL_GetError());
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(newwin);
+        return 0;
+    }
+
+    SDL_Rect rect = {0, 0, 340, 340};
+    SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, texture, NULL, &rect);
+    SDL_RenderPresent(renderer);
+
+    SDL_Event event;
+    int restart = 0;
+
+    // Event loop to wait for the user's input
+    while (SDL_WaitEvent(&event)) {
+        if (event.type == SDL_QUIT) {
+            break;
         }
         if (event.type == SDL_KEYDOWN) {
             if (event.key.keysym.sym == SDLK_y) {
                 resetGame(game);
-                return 1;
-                }
-                if (event.key.keysym.sym == SDLK_n) {
-                    return 0;
-                    }
-                    }
-                    SDL_Delay(100);
-                    }
-                    SDL_DestroyRenderer(rendere);
-                    SDL_DestroyWindow(newwin);
-                    return 0;
+                restart = 1;
+                break;
+            } else if (event.key.keysym.sym == SDLK_n) {
+                break;
+            }
+        }
+    }
 
+    // Clean up resources
+    SDL_DestroyTexture(texture);
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(newwin);
+
+    return restart;
 }
+
+
 /* Main Function */
-/*int main(int argc, char* args[]) {
+int main(int argc, char* args[]) {
     if (!initSDL()) {
         printf("Failed to initialize!\n");
         return -1;
     }
-    
+    start:
     GameState gameState;
     resetGame(&gameState);
     
@@ -382,19 +423,19 @@ while (SDL_WaitEvent(&event)) {
         }
         
         renderGame(&gameState);
+
         SDL_Delay(100);
     }
-
+    int restart=playagain(&gameState);
+    if (restart==1)
+    {
+       goto start; /* code */
+    }
     closeSDL();
     return 0;
-}*/
-int main(int argc,char* args[]){
-    GameState* g=NULL;
-  SDL_Init(SDL_INIT_EVERYTHING);
-  
-    playagain(g);
-    closeSDL();
 }
+
+
 
 
 

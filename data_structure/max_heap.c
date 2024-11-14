@@ -10,10 +10,10 @@ typedef struct {
 } Heap;
 
 // Function to swap two elements
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+void swap(void *a, void  *b) {
+    void * temp = &a;
+    a = &b;
+    b = temp;
 }
 
 // Function to heapify down (bubble down) for a max-heap

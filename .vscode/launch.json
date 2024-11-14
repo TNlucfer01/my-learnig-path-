@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "eg",
+            "request": "launch",
+            "mainClass": "eg",
+            "projectName": "my-learnig-path-_682e8684"
+        },
+        {
             "name": "(gdb) Attach",
             "type": "cppdbg",
             "request": "attach",
@@ -23,6 +30,5 @@
                 }
             ]
         }
-
     ]
 }

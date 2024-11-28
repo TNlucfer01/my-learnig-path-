@@ -21,10 +21,19 @@ package thi;
 }
 
 public class this1 {
+           public int add(int a ,int b ){
+            return a+b;
+        } 
+        public int a =10;
     public static void main(String[] args) {
         Student s1 = new Student("Aathi");
         s1.display(); // Output: Name: Aathi, Age: 18
+        System.out.println("Sum: " + new this1().add(10, 20));
     }
+}
+
+class aathi{
+    
 }
 
     

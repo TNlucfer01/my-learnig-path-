@@ -11,6 +11,7 @@ class Calculator {
 }
 
 public class this2{
+private int a =10;
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         calc.performAddition(); // Output: Sum: 15

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-
+#include<math.h>
 #define MAX_NODES 1000
 
 // Structure to represent an edge in the graph
@@ -91,6 +91,7 @@ void heapifyDown(MinHeap *heap, int index) {
 // Function to insert a new element into the min-heap
 void insertHeap(MinHeap *heap, int vertex, int distance) {
     int i = heap->size++;
+
     heap->dist[i] = distance;
     heap->vertex[i] = vertex;
 
@@ -118,6 +119,7 @@ int extractMin(MinHeap *heap, int *minDist) {
 
 // Dijkstra's algorithm implementation
 void dijkstra(Graph *graph, int src) {
+Node* temp;
     int numVertices = graph->numVertices;
     //for the noting the distance of each nodes and also the visited nodes
     int dist[MAX_NODES];
@@ -127,6 +129,7 @@ void dijkstra(Graph *graph, int src) {
     for (int i = 0; i < numVertices; i++) {
         dist[i] = INT_MAX;
     }
+   
     dist[src] = 0;
 
 // Create a min-heap
@@ -151,8 +154,10 @@ void dijkstra(Graph *graph, int src) {
             int v = edge->dest;
             int weight = edge->weight;
 //last condition is to select the shortest path 
+
             if (!visited[v] && dist[u] != INT_MAX && dist[u] + weight < dist[v]) {
                 dist[v] = dist[u] + weight;
+
                 insertHeap(minHeap, v, dist[v]);
             }
             edge = edge->next;
@@ -169,6 +174,11 @@ void dijkstra(Graph *graph, int src) {
     free(minHeap->vertex);
     free(minHeap);
 }
+typedef struct node{
+    int src;
+    int dis;
+}
+Node;
 
 int main() {
     int numVertices = 5;
@@ -196,7 +206,7 @@ int main() {
     addEdge(graph, 4, 0, 1);
     addEdge(graph, 2, 3, 7);
     addEdge(graph, 1, 2, 5);
-    
+    addEdge(graph,2,4,1); 
 
     int source = 0;
     printf("Dijkstra's Algorithm starting from node %d:\n", source);

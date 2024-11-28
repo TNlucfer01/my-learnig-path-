@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "thi3",
+            "request": "launch",
+            "mainClass": "thi.thi3",
+            "projectName": "my-learnig-path-_682e8684"
+        },
+        {
+            "type": "java",
+            "name": "thiS",
+            "request": "launch",
+            "mainClass": "thiS",
+            "projectName": "my-learnig-path-_682e8684"
+        },
+        {
+            "type": "java",
+            "name": "arraylist",
+            "request": "launch",
+            "mainClass": "arraylist",
+            "projectName": "my-learnig-path-_682e8684"
+        },
+        {
+            "type": "java",
+            "name": "autoboxing",
+            "request": "launch",
+            "mainClass": "autoboxing",
+            "projectName": "my-learnig-path-_682e8684"
+        },
+        {
+            "type": "java",
+            "name": "basic",
+            "request": "launch",
+            "mainClass": "basic",
+            "projectName": "my-learnig-path-_682e8684"
+        },
+        {
+            "type": "java",
             "name": "eg",
             "request": "launch",
             "mainClass": "eg",

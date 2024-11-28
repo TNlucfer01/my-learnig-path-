@@ -2,15 +2,15 @@
 #include<stdio.h>
 #include<stdbool.h>
 
-struct node{
+typedef struct  node{
     struct node* next;
     int data;
     int weight;
-};
+}node;
 
-struct adjlist{
+typedef struct  adjlist{
     struct node* head;
-};
+}adjlist;
 
 typedef struct Graph {
     struct adjlist* array ;
@@ -98,14 +98,27 @@ void remove_edge(Graph* g, int src, int des) {
 }
 
 // Function to print the adjacency matrix
+
 void print_adj_matrix(Graph *g) {
-    if (g == NULL) {
-        printf("The graph is empty\n");
+    if (g == NULL || g->aar == NULL) {
+        printf("The graph is empty or uninitialized.\n");
         return;
     }
+
+    printf("Adjacency Matrix:\n");
+
+    // Print column headers
+    printf("    "); // Space for row headers
+    for (int j = 0; j < g->v; j++) {
+        printf("%3d ", j);
+    }
+    printf("\n");
+
+    // Print row headers and matrix values
     for (int i = 0; i < g->v; i++) {
+        printf("%3d ", i); // Row header
         for (int j = 0; j < g->v; j++) {
-            printf("%d ", g->aar[i][j]);
+            printf("%3d ", g->aar[i][j]);
         }
         printf("\n");
     }

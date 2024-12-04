@@ -59,7 +59,7 @@ bool initSDL() {
     }
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    surface=SDL_LoadBMP("/home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/usr/share/doc/assets/image/welcome_message.bmp");
+    surface=SDL_LoadBMP("IC_TAC_TOE/usr/share/doc/assets/image/welcome_message.bmp");
     texture=SDL_CreateTextureFromSurface(renderer,surface);
     SDL_FreeSurface(surface);
     SDL_RenderClear(renderer);

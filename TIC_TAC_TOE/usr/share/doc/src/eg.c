@@ -48,7 +48,7 @@
         }
         
         window = SDL_CreateWindow("Tic-Tac-Toe", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-        surface =SDL_LoadBMP("/home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/usr/share/doc/assets/image/t.bmp");
+        surface =SDL_LoadBMP("TIC_TAC_TOE/usr/share/doc/assets/image/t.bmp");
         SDL_SetWindowIcon(window,surface);
 
 
@@ -374,6 +374,8 @@
 
         SDL_Event event;
         int restart = 0;
+        SDL_Rect yes={90,200,70,40};
+        SDL_Rect no={180,200,70,40};
 
         // Event loop to wait for the user's input
         while (SDL_WaitEvent(&event)) {
@@ -382,11 +384,29 @@
             }
             if (event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_y) {
+                    yes:
                     resetGame(game);
                     restart = 1;
                     break;
                 } else if (event.key.keysym.sym == SDLK_n) {
+                    
+                    no:
                     break;
+                }
+            }
+                else if(event.type== SDL_MOUSEBUTTONDOWN){
+                    int x=event.button.x;
+                    int y=event.button.y;
+                    // Check if the click is inside the "Yes" button
+                if (x >= yes.x && x <= yes.x + yes.w &&
+                    y >= yes.y && y <= yes.y + yes.h) {
+                        goto yes;
+                }
+
+                // Check if the click is inside the "No" button
+                if (x >= no.x && x <= no.x + no.w &&
+                    y >= no.y && y <= no.y + no.h) {
+                        goto no;
                 }
             }
         }
@@ -398,6 +418,10 @@
 
         return restart;
     }
+
+    
+
+
 
 
     /* Main Function */
@@ -434,10 +458,6 @@
         closeSDL();
         return 0;
     }
-
-
-
-
 
     #ifdef _WIN32
     #include <windows.h>

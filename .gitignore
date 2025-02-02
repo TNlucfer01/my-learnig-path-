@@ -1,0 +1,11 @@
+*.log
+*.o
+*.a
+*.so
+*.exe
+*.ttf
+*.out
+*.bin
+*.elf
+*.s
+*.swp

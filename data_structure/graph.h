@@ -1,6 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<stdbool.h>
+#include<limits.h>
 
 typedef struct  node{
     struct node* next;
@@ -25,6 +26,7 @@ struct node* create_node(int data,int wieght) {
     temp->next = NULL;
     temp->weight=wieght;
     return temp;
+    return -1; // Return -1 if the destination node is not found
 }
 
 // Function to create a graph with v vertices
@@ -123,41 +125,57 @@ void print_adj_matrix(Graph *g) {
         printf("\n");
     }
 }
-
 // Queue structure for BFS
 struct queue {
     int last, front;
     int* aary;
 };
 
+
 #define MAX_NODES 100
 
 // Function to perform BFS
-void bfs(Graph* g, int v, int num) {
+int bfs(Graph* g, int start, int dest,int num) {
+    //creating the setup for the bfs
     int visited[MAX_NODES] = {0}; // Initialize visited array to 0 (false)
+        const int a =num;
+    int distance[MAX_NODES]={INT_MAX};
     
+    // queue 
     struct queue q;
     q.front = q.last = 0;
     q.aary = (int *)malloc(num * sizeof(int)); // Allocate memory for queue
-
-    visited[v] = 1; // Mark the start node as visited
-    q.aary[q.last++] = v; // Enqueue start node
-
+//gettig started
+    visited[start] = 1; // Mark the start node as visited
+    q.aary[q.last++] = start; // Enqueue start node
+    //underflow condition
     while (q.front < q.last) {
         // Dequeue a node from the queue
         int node = q.aary[q.front++];
         printf("%d ", node); // Process the node
 
-        // Explore all neighbors
+        // Enqueue neighbors of the node
         for (int i = 0; i < num; i++) {
-            if (g->aar[node][i] == 1 && !visited[i]) {
+            //getign distance
+            if (g->aar[node][i] != 0 && !visited[i]) {
                 visited[i] = 1; // Mark neighbor as visited
+                int new_distance = distance[node] + g->aar[node][i];
+                if (new_distance < distance[i]) {
+                    distance[i] = new_distance;
+                }
+                //returning them 
+                if(i==dest)
+                {
+                    printf("found, the distance is %d",distance);
+                    free(q.aary); // Free dynamically allocated memory for the queue
+                    return distance[i];
+                }
                 q.aary[q.last++] = i; // Enqueue neighbor
             }
         }
     }
-
     free(q.aary); // Free dynamically allocated memory for the queue
+    return -1; // Return -1 if the destination node is not found
 }
 
 struct stack{

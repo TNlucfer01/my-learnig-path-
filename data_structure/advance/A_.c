@@ -7,7 +7,6 @@
 //it takes two argument ,first is the soucre node and the second is the destination node 
 // the problem how could i find the nodes are same or not
 
-// test commit
 
 
 //returns the eucludian value of the current node  

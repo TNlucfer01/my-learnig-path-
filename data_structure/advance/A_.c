@@ -9,6 +9,7 @@
 
 
 
+
 //returns the eucludian value of the current node  
 int heuristic(int x,int x1,int y,int y1 ){
 

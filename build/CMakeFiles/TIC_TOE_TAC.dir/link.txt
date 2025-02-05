@@ -1,0 +1,1 @@
+/usr/bin/afl-gcc -g CMakeFiles/TIC_TOE_TAC.dir/main.c.o -o TIC_TOE_TAC

@@ -142,14 +142,13 @@ Node* temp;
         //to store the current vertex and als its distance 
         int minDist;
         int u = extractMin(minHeap, &minDist);
-    // to skip for the visted iteration 
+
         if (visited[u])
             continue;
 
         visited[u] = 1;
 
         // Update distances for each neighbor of u
-        
         Edge *edge = graph->array[u].head;
         while (edge != NULL) {
             int v = edge->dest;

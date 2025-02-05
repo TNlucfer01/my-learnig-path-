@@ -1,8 +1,8 @@
 [
 {
-  "directory": "D:/mine/New folder/build",
-  "command": "C:\\MinGW\\bin\\gcc.exe -g -o CMakeFiles\\TIC_TOE_TAC.dir\\main.c.obj -c \"D:\\mine\\New folder\\TIC_TOE_TAC\\main.c\"",
-  "file": "D:\\mine\\New folder\\TIC_TOE_TAC\\main.c",
-  "output": "CMakeFiles\\TIC_TOE_TAC.dir\\main.c.obj"
+  "directory": "/home/darkemperor/aathi/my-learnig-path-/build",
+  "command": "/usr/bin/afl-gcc   -g -o CMakeFiles/TIC_TOE_TAC.dir/main.c.o -c /home/darkemperor/aathi/my-learnig-path-/TIC_TOE_TAC/main.c",
+  "file": "/home/darkemperor/aathi/my-learnig-path-/TIC_TOE_TAC/main.c",
+  "output": "CMakeFiles/TIC_TOE_TAC.dir/main.c.o"
 }
 ]

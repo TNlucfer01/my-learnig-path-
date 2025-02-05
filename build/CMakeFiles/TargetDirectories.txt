@@ -1,7 +1,7 @@
-D:/mine/New folder/build/CMakeFiles/TIC_TOE_TAC.dir
-D:/mine/New folder/build/CMakeFiles/edit_cache.dir
-D:/mine/New folder/build/CMakeFiles/rebuild_cache.dir
-D:/mine/New folder/build/CMakeFiles/list_install_components.dir
-D:/mine/New folder/build/CMakeFiles/install.dir
-D:/mine/New folder/build/CMakeFiles/install/local.dir
-D:/mine/New folder/build/CMakeFiles/install/strip.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/TIC_TOE_TAC.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/edit_cache.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/rebuild_cache.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/list_install_components.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/install.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/install/local.dir
+/home/darkemperor/aathi/my-learnig-path-/build/CMakeFiles/install/strip.dir

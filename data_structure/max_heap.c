@@ -8,27 +8,28 @@ typedef struct {
     int array[MAX_SIZE];
     int size;
 } Heap;
+
 // Function to swap two elements
-void swap(int *a, int  *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
+void swap(void *a, void  *b) {
+    void * temp = &a;
+    a = &b;
+    b = temp;
 }
 
 // Function to heapify down (bubble down) for a max-heap
-void heapifyDown(Heap *heap,int index) {
+void heapifyDown(Heap *heap, int index) {
     int largest = index;
     int leftChild = 2 * index + 1;
     int rightChild = 2 * index + 2;
-//if the left child is greater than the parent
-    if (leftChild<heap->size && heap->array[leftChild] > heap->array[largest]) {
+
+    if (leftChild < heap->size && heap->array[leftChild] > heap->array[largest]) {
         largest = leftChild;
     }
-//if the right child is greater than the parent
+
     if (rightChild < heap->size && heap->array[rightChild] > heap->array[largest]) {
         largest = rightChild;
     }
-// if the largest is not the parent
+
     if (largest != index) {
         swap(&heap->array[index], &heap->array[largest]);
         heapifyDown(heap, largest);
@@ -38,7 +39,7 @@ void heapifyDown(Heap *heap,int index) {
 // Function to heapify up (bubble up) for a max-heap
 void heapifyUp(Heap *heap, int index) {
     int parentIndex = (index - 1) / 2;
-//if the parent is less than the child
+
     if (index > 0 && heap->array[index] > heap->array[parentIndex]) {
         swap(&heap->array[index], &heap->array[parentIndex]);
         heapifyUp(heap, parentIndex);
@@ -100,8 +101,10 @@ int main() {
 
     // Delete the root element
     int root = deleteRoot(&heap);
-    printf("Deleted root element: %d\n",root);
+    printf("Deleted root element: %d\n", root);
+
     printf("Heap after deletion: ");
     printHeap(&heap);
+
     return 0;
 }

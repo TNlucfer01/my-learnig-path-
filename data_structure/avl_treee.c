@@ -8,7 +8,8 @@ struct node {
     struct node* right; // Pointer to the right child
     int height;         // Height of the node
 };
-
+    cvjkd 
+    
 // Function prototypes
 struct node* create_node(int data);
 int get_height(struct node* n);

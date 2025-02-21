@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include<c++/14/cxxabi.h>
 
 // Define colors for Red-Black Tree nodes
 #define RED 1
@@ -120,7 +121,7 @@ void rbInsert(struct node **root, int data) {
     if (y == NULL) {
         *root = z;  // Tree was empty
     } else if (z->data < y->data) {
-        y->left = z;
+         y->left = z;
     } else {
         y->right = z;
     }

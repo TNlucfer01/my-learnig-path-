@@ -3,9 +3,9 @@ SRC = /home/darkemperor/aathi/my-learnig-path-/TIC_TAC_TOE/usr/share/doc/src/eg.
 OUTPUT = a
 
 # Compiler flags for Windows and Linux
-SDL2_CFLAGS = -I/usr/include/SDL2
-SDL2_LIBS_LINUX = -lSDL2 -lwayland-client
-SDL2_LIBS_WINDOWS = -lSDL2 -lSDL2main -mwindows
+SDL2_CFLAGS = -I/usr/include/SDL2 
+SDL2_LIBS_LINUX = -lSDL2 -lwayland-client -lSDL2_mixer
+SDL2_LIBS_WINDOWS = -lSDL2 -lSDL2main -mwindows -lSDL2_mixer
 
 # Determine the platform using uname
 UNAME := $(shell uname)

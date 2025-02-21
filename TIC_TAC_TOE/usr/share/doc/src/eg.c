@@ -1,8 +1,28 @@
-    #include <stdbool.h>
+    /*
+    Tic-Tac-Toe Game - A simple graphical Tic-Tac-Toe game using SDL.
+
+    Copyright (C) 2024  Aathi
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+   #include <stdbool.h>
+   
     #include <stdio.h>
     #include<SDL2/SDL.h>
-    #include<SDL2/SDL_test_font.h>
-
+    #include<SDL2/SDL_mixer.h>
+    #include<string.h>
     #define SCREEN_WIDTH 640
     #define SCREEN_HEIGHT 640
     #define LINE_THICKNESS 5
@@ -13,7 +33,7 @@
     SDL_Texture* texture=NULL;
     SDL_Rect imager={0,0,SCREEN_HEIGHT,SCREEN_WIDTH};
     SDL_Surface* surface=NULL;
-
+    Mix_Music* music=NULL;
 
     typedef struct {
         int board[3][3];  // 0 = empty, 1 = player1 (X), 2 = player2 (O)
@@ -21,8 +41,9 @@
         bool isRunning;
     } GameState;
 
-
+    void playSong();
     /* Function Prototypes */
+    void stopsong();
     bool initSDL();
     void closeSDL();
     void handleMouseClick(GameState* gameState, int x, int y);
@@ -50,7 +71,11 @@
         window = SDL_CreateWindow("Tic-Tac-Toe", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         surface =SDL_LoadBMP("TIC_TAC_TOE/usr/share/doc/assets/image/t.bmp");
         SDL_SetWindowIcon(window,surface);
-
+         // Initialize SDL_mixer
+        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+            printf("SDL_mixer could not initialize! Mix Error: %s\n", Mix_GetError());
+            return 1;
+        }
 
         if (window == NULL) {
             printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
@@ -69,6 +94,7 @@
             printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
             return false;
         }
+        playSong("../assets/music/monster.mp3");
         
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         
@@ -137,7 +163,7 @@
 
         drawGrid();
         drawSymbols(gameState);
-
+       
         SDL_RenderPresent(renderer);
     }
 
@@ -218,6 +244,24 @@
 
         draw_thick_circle(renderer, centerX, centerY, radius,5);
     }
+void playSong(const char *songName) {
+
+    music = Mix_LoadMUS(songName);
+    if (!music) {
+        printf("Failed to load music: %s\n", Mix_GetError());
+        return;
+    }
+
+    // Play the music in an infinite loop (-1 means loop forever)
+    if (Mix_PlayMusic(music, -1) == -1) {
+        printf("Failed to play music: %s\n", Mix_GetError());
+    }
+
+    // Wait for user to press 'q' to stop music
+
+    // Clean up
+   
+}
 
     /** to draw a thick O
      * it is called by draw_O
@@ -366,7 +410,7 @@
             SDL_DestroyWindow(newwin);
             return 0;
         }
-
+        Mix_PauseMusic(); 
         SDL_Rect rect = {0, 0, 340, 340};
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, texture, NULL, &rect);
@@ -380,12 +424,14 @@
         // Event loop to wait for the user's input
         while (SDL_WaitEvent(&event)) {
             if (event.type == SDL_QUIT) {
+              
                 break;
             }
             if (event.type == SDL_KEYDOWN) {
                 if (event.key.keysym.sym == SDLK_y) {
                     yes:
                     resetGame(game);
+                    Mix_ResumeMusic();
                     restart = 1;
                     break;
                 } else if (event.key.keysym.sym == SDLK_n) {
@@ -425,7 +471,8 @@
 
 
     /* Main Function */
-    int main(int argc, char* args[]) {
+    int main(int argc, char* argv[]) {
+        
         if (!initSDL()) {
             printf("Failed to initialize!\n");
             return -1;

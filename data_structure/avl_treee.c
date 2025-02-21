@@ -8,8 +8,8 @@ struct node {
     struct node* right; // Pointer to the right child
     int height;         // Height of the node
 };
-    cvjkd 
     
+
 // Function prototypes
 struct node* create_node(int data);
 int get_height(struct node* n);
@@ -263,7 +263,11 @@ int main() {
     root = insert(root, 30);
     root = insert(root, 40);
     root = insert(root, 50);
-    root = insert(root, 25);
+    root = insert(root, 60);
+
+    root = insert(root, 70);
+    root = insert(root, 80);
+    root = insert(root, 90);
      int s= search (root,10);
      root= delete(root,10);
     // Printing the in-order traversal of the AVL tree

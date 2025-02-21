@@ -27,12 +27,12 @@ regr=linear_model.LinearRegression()
 regr.fit(diabetes_X_train,diabetes_y_train)
 # Make predictions using the testing set
 diabetes_y_pred=regr.predict(diabetes_X_test)
-#print("Coefficients:\n",regr.coef_)
+print("Coefficients:\n",regr.coef_)
 #to print the mean sqyared error
-#print("Mean Squared Error:%2f"%mean_squared_error(diabetes_y_test,diabetes_y_pred))
+print("Mean Squared Error:%2f"%mean_squared_error(diabetes_y_test,diabetes_y_pred))
 
-#to fins the coefficient of determination  
-#print("Coefficients of Detemination:%2f"%r2_score(diabetes_y_test,diabetes_y_pred))
+#to fins the coefficient of determination
+print("Coefficients of Detemination:%2f"%r2_score(diabetes_y_test,diabetes_y_pred))
 
 #to plot the output
 plt.scatter(diabetes_X_test,diabetes_y_test,color="blue")

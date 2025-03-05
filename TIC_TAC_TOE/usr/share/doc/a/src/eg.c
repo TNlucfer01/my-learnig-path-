@@ -17,8 +17,8 @@ SDL_Surface* surface=NULL;
 
 
 typedef struct {
-    int board[3][3];  // 0 = empty, 1 = player1 (X), 2 = player2 (O)
-    int currentPlayer;
+    unsigned int board[3][3];  // 0 = empty, 1 = player1 (X), 2 = player2 (O)
+    unsigned int currentPlayer;
     bool isRunning;
 } GameState;
 
@@ -356,6 +356,79 @@ int main(int argc, char* args[]) {
     return 0;
 }
 
+
+void easyAi(GameState* GameState){
+    int row,col;
+    do{
+        row=rand()%3;
+        col=rand()%3;
+
+    }while(GameState->board[row][col]!=0);
+    GameState->board[row][col]=GameState->currentPlayer;
+}
+
+
+void mediumAI(GameState* GameState) {
+    int bestRow = -1, bestCol = -1;
+    float bestScore = -1;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (GameState->board[i][j] == 0) {  // Empty cell
+                float score = get_score(GameState, i, j);
+                if (score > bestScore) {  // Find the best score
+                    bestScore = score;
+                    bestRow = i;
+                    bestCol = j;
+                }
+            }
+        }
+    }
+
+    // Place AI move in the best position found
+    if (bestRow != -1 && bestCol != -1) {
+        GameState->board[bestRow][bestCol] = GameState->currentPlayer;
+    }
+}
+
+//get a min heap of the scores
+
+float get_score(GameState* GameState, int row, int col) {
+    float scr = 0;
+    int player = GameState->currentPlayer;
+
+    // Check boundaries before accessing board elements
+    if (row > 0 && GameState->board[row - 1][col] == player) scr++;  // Top
+    if (row < 2 && GameState->board[row + 1][col] == player) scr++;  // Bottom
+    if (col > 0 && GameState->board[row][col - 1] == player) scr++;  // Left
+    if (col < 2 && GameState->board[row][col + 1] == player) scr++;  // Right
+
+    if (row > 0 && col > 0 && GameState->board[row - 1][col - 1] == player) scr++;  // Top-left
+    if (row > 0 && col < 2 && GameState->board[row - 1][col + 1] == player) scr++;  // Top-right
+    if (row < 2 && col > 0 && GameState->board[row + 1][col - 1] == player) scr++;  // Bottom-left
+    if (row < 2 && col < 2 && GameState->board[row + 1][col + 1] == player) scr++;  // Bottom-right
+
+    return pow(scr, 0.5);  // Square root of score
+}
+
+
+int aiChose(char choice[10]){
+ if("easy"== tolower(choice)){
+        return 1;     
+    }
+    else if("hard "==tolower(choice))
+{
+    return 2;
+
+}   
+else if("medium"==tolower(choice)){
+    return 3;
+}
+else{
+    printf("enter a valid choice");
+    return 0;
+} 
+}
 
 
 #ifdef _WIN32

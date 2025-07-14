@@ -1,0 +1,37 @@
+React Function Naming Conventions
+- CamelCase for Functions: Name functions with camelCase (e.g., handleClick, fetchData).
+- Descriptive Names: Use clear names for the function’s purpose (e.g., updateName instead of change).
+- Event Handlers with handle: Prefix event-handling functions with handle (e.g., handleSubmit, handleInputChange).
+- Action Functions with Verbs: Start with a verb for actions (e.g., addItem, deleteUser).
+- Avoid Vague Names: Use specific names (e.g., calculateCartTotal instead of calc).
+- Component Names in PascalCase: Name components with PascalCase (e.g., TodoList, UserCard).
+- Hooks with use Prefix: Custom hooks start with use (e.g., useFetch, useAuth).
+
+Simplified React Developer Rules
+- Event Handling:
+  - Use camelCase for events (e.g., onClick, onChange).
+  - Example: <button onClick={handleClick}>Click</button>
+  - Prefer named functions over inline ones: onClick={handleClick} instead of onClick={() => doSomething()}.
+- Components:
+  - Write small, reusable functional components.
+  - Example: function Button() { return <button>Click</button>; }
+- JSX:
+  - Use self-closing tags (e.g., <Input />).
+  - Add key for lists: <li key={id}>Item</li>.
+- State and Props:
+  - Use useState for state: const [count, setCount] = useState(0);
+  - Pass clear props: <User name="Alice" />.
+- Performance:
+  - Use key in lists to optimize rendering.
+  - For large lists, consider react-window.
+- Code Organization:
+  - Group files: components/, hooks/.
+  - Keep components focused (e.g., separate TodoList and TodoItem).
+- Accessibility:
+  - Use semantic tags (e.g., <button>).
+  - Add aria-label for clarity (e.g., <button aria-label="Submit">).
+- Linting:
+  - Use ESLint and Prettier for consistent code.
+- Security:
+  - Avoid dangerouslySetInnerHTML.
+  - Check user input before displaying.

@@ -1,0 +1,9 @@
+Package: pdf2docx-cli
+Version: 1.0
+Section: utils
+Priority: optional
+Architecture: all
+Depends: python3, python3-pip
+Maintainer: YourName <you@example.com>
+Description: CLI tool to convert PDF to DOCX using pdf2docx
+

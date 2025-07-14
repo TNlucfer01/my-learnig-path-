@@ -1,0 +1,4 @@
+#!/bin/bash
+pipx install pdf2docx || echo "Install pdf2docx manually using pipx"
+
+

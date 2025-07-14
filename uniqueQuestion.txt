@@ -1,0 +1,8 @@
+Let me know if you want to wipe that localStorage from terminal or see how it behaves in incognito or cross-origin
+
+accesabilty means can anyone acces our webpage if  so how does the web crawler works
+
+does the aria tag helps them in anyway 
+memory routes what does this means 
+ can one br constains multiple routes and router 
+ 

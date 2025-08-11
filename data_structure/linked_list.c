@@ -8,9 +8,9 @@ typedef struct node1 {
 
 node1* create_node1() {
     node1* temp = (node1*)malloc(sizeof(node1));
-    int data;
-    printf("Enter the data to be inserted: ");
-    scanf("%d", &data);
+        int data;
+        printf("Enter the data to be inserted: ");
+        scanf("%d", &data);
     temp->data = data;  // Assigning data to the node1
     temp->next = NULL;
     return temp;

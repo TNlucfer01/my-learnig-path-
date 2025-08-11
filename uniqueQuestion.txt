@@ -5,4 +5,5 @@ accesabilty means can anyone acces our webpage if  so how does the web crawler w
 does the aria tag helps them in anyway 
 memory routes what does this means 
  can one br constains multiple routes and router 
- 
+can the input of the useState can be a function 
+curl learn for the API client looker 

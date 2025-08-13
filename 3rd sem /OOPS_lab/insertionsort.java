@@ -1,4 +1,3 @@
-package insertionsort;
 public class insertionsort
 {
 public static void InsertionSort(int[] list)

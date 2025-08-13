@@ -12,3 +12,22 @@
 TIC_TAC_TOE/
 
 
+
+react/
+*.pdf
+*.apk
+*.iss
+*.docx
+*.ini
+*.avi
+*.png
+*.mp3
+intern/
+*.js
+java/
+javafx/
+*.log
+learn/
+*.mp4
+pic/
+

@@ -1,4 +1,3 @@
-package seqsearh;
 public class seqsearch
 {
 public static int search(int arr[], int x)
@@ -24,5 +23,6 @@ if (result == -1)
 System.out.print("Element is not present in array");
 else
 System.out.print("Element is present"+ " at index "+ result);
+System.out.println("hrlleo toels ");
 }
 }

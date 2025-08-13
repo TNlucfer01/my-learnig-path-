@@ -1,4 +1,3 @@
-package private_public;
 public class private_public
 {
 private int v1,v2;

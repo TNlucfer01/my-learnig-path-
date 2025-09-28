@@ -1,4 +1,3 @@
-# my-learnig-path-
-hi everyone im just a student pursing the bachleor in computer science 
-hello 
-iiiinndm
+# my-learnig-path
+"""
+this is my private repo where i would mostly store all my college related stuff """

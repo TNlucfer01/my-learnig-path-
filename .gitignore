@@ -10,8 +10,9 @@
 *.s
 *.swp
 TIC_TAC_TOE/
-
-
+smartcampus
+*.dll
+smartcampus
 
 react/
 *.pdf

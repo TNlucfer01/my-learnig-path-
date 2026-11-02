@@ -1,0 +1,5 @@
+rofi 
+wofi 
+ranger
+vimiuim tmw
+

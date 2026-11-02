@@ -1,0 +1,1 @@
+How might we design an AI driven app incorporating climate modelling, disease management, soil testing, market forecasting which will provide farmers with valuable inputs, guidance on crop management, sustainable agricultural practices. irrigation strategies, use of agricultural inputs and choice of crops? 

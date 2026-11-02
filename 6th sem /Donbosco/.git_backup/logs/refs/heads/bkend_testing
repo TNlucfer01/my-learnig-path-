@@ -1,0 +1,35 @@
+0000000000000000000000000000000000000000 8d1614f48ce260b32e97f346e874c456aa5af4f5 TNlucfer01 <ihdaa2006@gmail.com> 1772870112 +0530	branch: Created from 8d1614f48ce260b32e97f346e874c456aa5af4f5
+8d1614f48ce260b32e97f346e874c456aa5af4f5 180757e5ebf9e4407d0bb5d8547785db24bac72e TNlucfer01 <ihdaa2006@gmail.com> 1772888597 +0530	commit: Login has been finished
+180757e5ebf9e4407d0bb5d8547785db24bac72e a854ada2853fd7a59b1a2930b2040f3a6958d279 TNlucfer01 <ihdaa2006@gmail.com> 1772890877 +0530	commit: Feat:userADD
+a854ada2853fd7a59b1a2930b2040f3a6958d279 3310f6e01a7599f167e516264b9ad40e3aa03c55 TNlucfer01 <ihdaa2006@gmail.com> 1772901494 +0530	commit: Feat:Principal_dashboard
+3310f6e01a7599f167e516264b9ad40e3aa03c55 debe25d27c4517048708f2bb6403900c7b59c1ad TNlucfer01 <ihdaa2006@gmail.com> 1773038361 +0530	commit: FIX:addstudent
+debe25d27c4517048708f2bb6403900c7b59c1ad 82814cc84c8a44fa204c29140b35183a0cb8b4a4 TNlucfer01 <ihdaa2006@gmail.com> 1773158779 +0530	commit: FEAT:reviewing
+82814cc84c8a44fa204c29140b35183a0cb8b4a4 67328e730d9799322583f822eeb4cfd508661ede TNlucfer01 <ihdaa2006@gmail.com> 1773198833 +0530	commit: FEAT:update backend
+67328e730d9799322583f822eeb4cfd508661ede 56a64ef5bf7d04380b93c9674f0089e3e9c09d7e TNlucfer01 <ihdaa2006@gmail.com> 1773243478 +0530	commit: FEAT:update attedndance correction
+56a64ef5bf7d04380b93c9674f0089e3e9c09d7e 551222cac8dcbf07343a72c20b027b302764e66f TNlucfer01 <ihdaa2006@gmail.com> 1773283179 +0530	commit: fixing the AC
+551222cac8dcbf07343a72c20b027b302764e66f cc74c81e78a62e5370a69ea00301465be2d11560 TNlucfer01 <ihdaa2006@gmail.com> 1773303130 +0530	commit: FEAT:update attedndance correction
+cc74c81e78a62e5370a69ea00301465be2d11560 b229daee68d344a4b4abea22a9b5b8a9856a5eb8 TNlucfer01 <ihdaa2006@gmail.com> 1773308096 +0530	commit: Feat:submiting
+b229daee68d344a4b4abea22a9b5b8a9856a5eb8 6b6b92371c4d613d78e02da86a274e60db803704 TNlucfer01 <ihdaa2006@gmail.com> 1773332361 +0530	commit: update:takeattendance
+6b6b92371c4d613d78e02da86a274e60db803704 e478b29bc7c006fe2344a2908fe5256821e7582b TNlucfer01 <ihdaa2006@gmail.com> 1773332374 +0530	commit: update:takeattendance
+e478b29bc7c006fe2344a2908fe5256821e7582b 4a7702cb5f684cd6db5a7b27aae5dd2eb172dab4 TNlucfer01 <ihdaa2006@gmail.com> 1773334202 +0530	commit: Feat:updated the takeattendance
+4a7702cb5f684cd6db5a7b27aae5dd2eb172dab4 c9fe2e3233481aee0d341a9588a96726a305a3bc TNlucfer01 <ihdaa2006@gmail.com> 1773336308 +0530	commit: Feat:correct_attedance
+c9fe2e3233481aee0d341a9588a96726a305a3bc 7cb93fd8ff4bf22e2695b355eebd9429e539bfa8 TNlucfer01 <ihdaa2006@gmail.com> 1773394866 +0530	commit: Update attendance correction API and frontend to match requested format
+7cb93fd8ff4bf22e2695b355eebd9429e539bfa8 7667b9f5e31117c15d14f46c66c8317303655714 TNlucfer01 <ihdaa2006@gmail.com> 1773395980 +0530	commit: Implement saveStudentPri route and service for principal attendance updates
+7667b9f5e31117c15d14f46c66c8317303655714 a78feef2e43248a5d328442c1cfbf05c004733d9 TNlucfer01 <ihdaa2006@gmail.com> 1773396160 +0530	commit: Fix syntax error missing closing bracket for fetchStudentsPrincipal
+a78feef2e43248a5d328442c1cfbf05c004733d9 d6133025c136f5477a96d467496154e646c3c88d TNlucfer01 <ihdaa2006@gmail.com> 1773396492 +0530	commit: Fix principal attendance correction saving and add status dropdown
+d6133025c136f5477a96d467496154e646c3c88d 8552b8b4299c1c73961541758b5cdd5335cd43c6 TNlucfer01 <ihdaa2006@gmail.com> 1773397196 +0530	commit: Fix principal lock checkbox logic and label
+8552b8b4299c1c73961541758b5cdd5335cd43c6 0b1b26e556d8b914f9cd1e0fb2578db3eb2b8430 TNlucfer01 <ihdaa2006@gmail.com> 1773397683 +0530	commit: Filter staff attendance correction list to only unlocked records
+0b1b26e556d8b914f9cd1e0fb2578db3eb2b8430 3f9405c5797dd9ea87f205dcd3e1c675ce991f2f TNlucfer01 <ihdaa2006@gmail.com> 1773417617 +0530	commit: Fix timezone skew bug causing dates to shift when selecting from calendar UI
+3f9405c5797dd9ea87f205dcd3e1c675ce991f2f 2146b91aaca5a5bd566a3a8eec848233f86bf97a TNlucfer01 <ihdaa2006@gmail.com> 1773417851 +0530	commit: Force Principal modifications to lock attendance records permanently
+2146b91aaca5a5bd566a3a8eec848233f86bf97a fc353a600ea8992aab0de90b64bf164acce885dd TNlucfer01 <ihdaa2006@gmail.com> 1773596058 +0530	commit: bug:fixing
+fc353a600ea8992aab0de90b64bf164acce885dd e1ef1fea6908de9702de0ac3a3ce5e3e0374a6d9 TNlucfer01 <ihdaa2006@gmail.com> 1773596141 +0530	commit: bug fixes
+e1ef1fea6908de9702de0ac3a3ce5e3e0374a6d9 879e9b102f6fe8eaba5f79dbd7af0d2e99121d64 TNlucfer01 <ihdaa2006@gmail.com> 1773628876 +0530	commit: fixing
+879e9b102f6fe8eaba5f79dbd7af0d2e99121d64 73d79639d97729cd98abd86f8675b420510c2164 TNlucfer01 <ihdaa2006@gmail.com> 1773657256 +0530	commit: Update:fixed commen bugs
+73d79639d97729cd98abd86f8675b420510c2164 ac4afa41af27d2a52b82c7a031fde757ed69231f TNlucfer01 <ihdaa2006@gmail.com> 1773741052 +0530	commit: fix
+ac4afa41af27d2a52b82c7a031fde757ed69231f c68d4f9122d40d4b2863a4000e7a9e28c1d5cf0b TNlucfer01 <ihdaa2006@gmail.com> 1773813372 +0530	commit: UI:fix
+c68d4f9122d40d4b2863a4000e7a9e28c1d5cf0b 5295b219ec4611b16a9b1e401f678975522c58a0 TNlucfer01 <ihdaa2006@gmail.com> 1773987312 +0530	commit: UI:before stich
+5295b219ec4611b16a9b1e401f678975522c58a0 2c79ff5b03054c57aef49b4ab1486457f6a244dc TNlucfer01 <ihdaa2006@gmail.com> 1773989292 +0530	commit: ui:fix bugs
+2c79ff5b03054c57aef49b4ab1486457f6a244dc 8e9f003c34a7c4b8507d27a9ff95346c5d09a11d TNlucfer01 <ihdaa2006@gmail.com> 1773993421 +0530	commit: ui:loginPagefix
+8e9f003c34a7c4b8507d27a9ff95346c5d09a11d d3efa87334e1c785b75020336e06df167131f30c TNlucfer01 <ihdaa2006@gmail.com> 1774258545 +0530	commit: ui:updating close enough
+d3efa87334e1c785b75020336e06df167131f30c 3e44de2ecc341a710a7c4eca83b2af9a7ae4c91f TNlucfer01 <ihdaa2006@gmail.com> 1774259225 +0530	commit: ui:updating close enough
+3e44de2ecc341a710a7c4eca83b2af9a7ae4c91f d4356b8f080737d58dfea2caef4727cf6252bb22 TNlucfer01 <ihdaa2006@gmail.com> 1774315815 +0530	pull: Fast-forward

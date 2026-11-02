@@ -1,0 +1,72 @@
+status 
+1. client one member   
+2. one project with the trial pack for the  electronic shop  
+3. 10k package trial   
+theme dark theme with green emerald and other color        
+this is what he has said so far 
+
+now is the time he said that im gonna be CEO -> this is s ajudt nothing at all 
+1. i have 2 guys 
+1. 	sengkotaiyan ( want to get more exp ,  move forward in life ,    ) 
+2. 	guna ( ui ) 
+
+
+the  web page 
+
+resource 
+3 members 
+
+
+
+the task in the home page are 
+1. footer chnage (done) 
+2. section creation (done)
+	1. shop image section at the top 
+	2. assurity section 
+	3. get started 
+3. UI desgining (gn)
+
+the task in product page 
+	1. image showing (slideshozw) sk
+	2. update the product items like this (image detials o the right and then description at the bottom then lastly the review at the bottom ) sk
+	3. add the description slide atthe bottom sk
+	4. add the review sk
+	5. related products suggestions at the bottom  sk 
+	6. ui desgin for the calgory and the search (realtime filtering , guna )
+	
+the task in the about page are
+	1. creating the 4 section for that -sk 
+	2. updatin gthe ui gn
+	3. remove the contact info me 
+	
+the tasks in the contact pages are 
+	1. creating a new page for the dealership - me 
+	2. conect with us section sk 
+	3. contact section wih 3 cards (phone,email)
+	4. add the  integreate  map to the html sk
+	5. opening hours too sk
+
+the task in the  my orders page 
+	1. research for now  me
+	2. ui updation gn
+
+the task in the profile page are 
+	1. make it more accurte as possible gn 
+	2. then remove them  me
+	
+the task int he cart page are 
+	1. ui gn
+	2. when i click the add to the cart it automatcally goes to the cart page so remove hat me 
+
+the task in the checkout page are 
+	1. ui gn
+	2. send the detials to the google sheets ( sheet mat ) me 
+	3. add the payment screen shots me 
+	4. research on how to do that me 
+	
+	the genral task are the following 
+		1. ui theme gn
+		2. and research ont he 3d desgin implementation me 
+		3. add more anitmation to them me gn
+		
+1. every task can done in parrallel 

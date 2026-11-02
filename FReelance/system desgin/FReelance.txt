@@ -1,0 +1,92 @@
+basic bbussiness website 
+view 
+
+
+1. home page ()
+header(logo(left top (image)),name of the shop(have a placeholder),other section name(home,products ,offers(redirect ot the product page offer category ),about,contact)
+home page(animation needed)
+	1.hero section (it  should have the following shop name , groups name , products name  ) like in   the image one
+	footer (normal  footer with the rights reserved and other  detials)
+2. about page (your choice)
+
+3. contact (seprate page) 
+	1. whats app (i need the following contact number wen i click it i should be able to go to the whats app
+	2. mail icon (when i clik the email it should go to the mailto 
+	3. location could be great if it is a gmaps intgreation  (when i click the  loction  it should go the gmaps)
+4. product/sevice display (search ,)
+
+	1. should get the new arivals category
+	1. category(each category should have a image of product from that category )
+	when i click the new arrival or any of the catagory i should be able to see the products in that category and it's detials only  (this  is a template only have all the feature and detials i will remove the unessacary ones )
+	when i click a product a pop up should show in which the it show's a more elabrate   detials of the products 
+	
+	
+5. what should we so about the popup when i click 
+	1. list only 
+	2. whatsapp integrate (i send to the whatsapp) n
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+we need to have the  multiscreen applicarion 
+budget 10k 
+
+
+
+
+view 
+1. home page (when im )
+2. about page (seperate)
+3. contact  where should i put it
+4. product/sevice display (search ,) 
+5. product detials page(page)  when i click the product and press buy  it ask's for some of the  user detials (name,adress,...etc ) . then there will be a  
+qr scanner in which the user has to scan and pay the money and then user  have to enter the utrr and screenshot of the product .
+ADd to cart ( we have to add the card )
+1. list only 
+2. whatsapp integrate (i send to the whatsapp)
+3. google map intgrate 
+mordern ui 
+
+
+18k 
+
+
+1. home page (wlecome image of the shop, assurity section, get started )
+2. about page (hero section,mission,core values ,succuss ,ourstory)
+3. contact  where should i put it( whatsapp,mail, open section, maps section , dealership icon, extra delaership button and a page  )
+4. product display (products listing, search,filter,category options )  
+5. product detials page(image, detials, add to cart ) 
+7. cart page  icon(orders, then checkout)
+8. checkoutpage ( shipping detials,payment detials )
+9. order sucess view ( google sheets) 
+
+
+1. list only 
+2. whatsapp integrate (i send to the whatsapp)
+3. google map intgrate 
+mordern ui 
+
+new requirement
+1. home contact about  ( first budget )
+2. 

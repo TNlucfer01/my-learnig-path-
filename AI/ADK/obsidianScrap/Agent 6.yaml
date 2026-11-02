@@ -1,0 +1,9 @@
+name: Agent 6
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: "For each .md: Add YAML frontmatter, mermaid diagrams if possible,
+  bold key terms, code blocks if present, table of contents, proper H2/H3. Make
+  it Obsidian-beautiful."
+sub_agents:
+  - config_path: ./Agent 7 .yaml
+tools: []

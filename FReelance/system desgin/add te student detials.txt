@@ -1,0 +1,29 @@
+add te student detials 
+for a  staff
+we want to ad tthe folloeing 
+1. casual leave (limited)
+2. earned leave (after 1 year )
+3. medical leave 
+4. loss of pay for a staff
+5. staff hours calculation and also if possible we want to f the 
+6. OD 
+7. hour converting or swaping of hour
+8. staff need to inform  to the hod  for leave 
+9. hod needs to inform to he principal  for leave 
+for the stdudent 
+no of student 
+percentage
+
+
+
+
+othes 
+1. need to  add the  staff detials 
+2. add th emarkshheet to the student 
+3. siging the exam paper in the online wvia examcell scanning and uploading tehm 
+4. add the notes and other resurce for that  respective subjects 
+5. when the student is absent we should inform to the student automaticaly 
+6. fees stucture too 
+from  leelavathi  mam 
+question no 2 in part 
+hod is fine 

@@ -1,0 +1,5 @@
+chanage the glassmorphpism ui in the navbar  and side bar
+CHNAGE THE FOOTER
+remove the admin page and review to made into a static and the users can't add the reviews 
+for shoping the user don't need to add the account verifiaation in therfe 
+in the contact and the other pages i need to add some of the images  to make it more authentic 

@@ -1,0 +1,5 @@
+we have to find the minsum in a array ?
+it's just a prefix in disguise 
+
+
+	

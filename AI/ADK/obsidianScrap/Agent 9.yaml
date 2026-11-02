@@ -1,0 +1,10 @@
+name: Agent 9
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: |-
+  Write all final .md files to OBSIDIAN_VAULT_PATH.  
+  Auto-add [[wikilinks]] between related subtopics.  
+  Create _Index.md with [[Backlinks]] graph.  
+  Add #topic tag everywhere.
+sub_agents: []
+tools: []

@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - SS Electronics{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+
+<!-- all the animtion should happenonly when i scroll through the webpage  -->
+<section class="relative overflow-hidden bg-primary-gradient text-white pt-10 pb-32 lg:pt-22 lg:pb-48"
+    style="clip-path: ellipse(150% 100% at 50% 0%);">
+    <div class="container mx-auto px-6 lg:px-12 relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            <!-- Text Content -->
+            <div class="w-full lg:w-1/2 space-y-8 reveal reveal-up">
+                <div
+                    class="inline-flex bg-yellow-200 text-yellow-200  items-center gap-2 px-4 py-2 rounded-full glass-morphism">
+                    <span class="animate-pulse">✨</span>
+                    <span class="text-sm animate-pulse font-bold  tracking-wide uppercase">New Collection 2026</span>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
+                    SS Electronics<br />
+                    <span class="text-yellow-300 font-black">Quality For Your Life</span>
+                </h1>
+
+                <p class="text-base md:text-lg lg:text-xl text-white/80 max-w-lg leading-relaxed font-medium">
+                    Tamil Nadu's trusted destination for Heavy Boss quality audio — trolley woofers, tower speakers,
+                    home theaters, plus essential utility gadgets like rechargeable fans and emergency LED lights.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="{% url 'products:product_list' %}"
+                        class="btn btn-lg bg-white text-primary border-none hover:bg-white/90 group rounded-full px-8 shadow-xl shadow-black/20 transition-all duration-300">
+                        Shop Now
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+
+                    <a href="{% url 'core:contact' %}"
+                        class="btn btn-lg btn-outline text-white border-2 hover:bg-white hover:text-primary hover:border-white rounded-full px-8 transition-all duration-300">
+                        Contact now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Image -->
+            <div class="w-full lg:w-1/2 relative reveal reveal-zoom">
+                <div
+                    class="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/40 rotate-1 transform-gpu hover:rotate-0 transition-transform duration-500 border-4 border-white/10">
+                    <img src="{% static 'images/hero.jpg' %}" alt="Luxury Store" class="w-full h-auto object-cover">
+                    <!-- Glass highlight -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none">
+                    </div>
+                </div>
+                <!-- Decorative elements -->
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-yellow-300 rounded-full blur-3xl opacity-30"></div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-purple-400 rounded-full blur-3xl opacity-30">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Assurance Section -->
+<section class="py-32 ">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto text-center">
+            <!-- Item 1 -->
+            <div class="space-y-6 group reveal reveal-left">
+                <div
+                    class="w-20 h-20 mx-auto glass-morphism rounded-3xl flex items-center justify-center text-gray-700 group-hover:bg-primary-gradient group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-xl group-hover:shadow-gray-400/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                        <polyline points="16 7 22 7 22 13"></polyline>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-extrabold tracking-tight">Latest Trends</h3>
+                    <p class="text-base-content/60 text-base leading-relaxed max-w-xs mx-auto">
+                        Stay ahead with the newest arrivals and curated product collections.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="space-y-6 group reveal reveal-right">
+                <div
+                    class="w-20 h-20 mx-auto glass-morphism rounded-3xl flex items-center justify-center text-gray-700 group-hover:bg-primary-gradient group-hover:text-white transition-all duration-300 shadow-sm group-hover:shadow-xl group-hover:shadow-gray-400/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-extrabold tracking-tight">Secure Shopping</h3>
+                    <p class="text-base-content/60 text-base leading-relaxed max-w-xs mx-auto">
+                        Shop with confidence with our industry-leading secure payment system.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Category Title -->
+
+
+<!-- CTA Section -->
+<section class="py-12 md:py-32">
+    <div class="container mx-auto px-6 transition-all duration-700">
+        <div
+            class="relative rounded-[4rem] overflow-hidden bg-primary-gradient p-8 md:p-16 lg:p-32 text-center text-white shadow-2xl">
+            <!-- Background mesh -->
+            <div class="absolute inset-0 opacity-20 pointer-events-none">
+                <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white rounded-full blur-[100px]"></div>
+                <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-gray-300 rounded-full blur-[100px]">
+                </div>
+            </div>
+
+            <div class="relative z-10 space-y-10 reveal reveal-zoom">
+                <p
+                    class="text-xl lg:text-3xl text-white/90 font-bold tracking-tight px-4 max-w-4xl mx-auto leading-relaxed">
+                    Experience Heavy Boss quality audio and reliable utility electronics — serving Tamil Nadu with the
+                    best in sound and gadgets
+                </p>
+
+                <div class="pt-4">
+                    <a href="{% url 'products:product_list' %}"
+                        class="btn btn-lg h-20 bg-white text-primary border-none hover:bg-white/90 rounded-full px-7 md:px-16 shadow-2xl font-black text-xl tracking-tighter uppercase hover:scale-105 transition-all duration-300">
+                        View All Products
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+{% include 'partials/footer.html' %}
+{% endblock %}

@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --color-background: #131313;
+  --color-primary: #fabd00;
+  --color-primary-container: #b78a00;
+  --color-on-primary: #3f2e00;
+  --color-secondary: #00e3fd;
+  --color-secondary-container: #00616d;
+  --color-on-secondary: #00363d;
+  --color-surface: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #c1c6d7;
+  --color-outline: #8b90a0;
+  --color-outline-variant: #414755;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  body {
+    @apply bg-background text-on-surface font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+}
+
+@layer components {
+  .glass-nav {
+    @apply bg-neutral-950/60 backdrop-blur-xl border-b border-neutral-800/50;
+  }
+
+  .monolith-gradient {
+    @apply bg-gradient-to-br from-primary to-primary-container;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(250, 189, 0, 0.3);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

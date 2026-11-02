@@ -1,0 +1,12 @@
+display servers X11
+then we got this 
+1. AwesomeWM install this 
+
+
+there ate 2 DS in linux 
+one is X11 (80)
+another one is wayland 
+a protocol a DS that use the wayland is alled wayland compositer 
+a hyprland on wayland compositer 
+
+kitty why ?

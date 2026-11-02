@@ -1,0 +1,25 @@
+methods 
+accaes specifier 
+static memebers 
+javadoc commments 
+
+
+object as param
+return obj 
+nested class,static class
+inhertance(5)
+implents(1)
+super,overriding
+dynamic method dispatching
+abstract class 
+final with inhertance ,
+package,interface
+
+
+
+expect,user defined expection ,mutlithread
+prioties thread,
+synchronization 
+inter thread communiiation 
+wrpapers
+

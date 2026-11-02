@@ -1,0 +1,8 @@
+name: "Agent 1 "
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: 'Search ONLY on site:geeksforgeeks.org for the exact topic. Use
+  google_search tool with query: "{topic} site:geeksforgeeks.org". Return top 3
+  URLs + short snippet each.'
+sub_agents: []
+tools: []

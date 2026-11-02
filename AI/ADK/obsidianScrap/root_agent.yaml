@@ -1,0 +1,12 @@
+name: obsidianScrap
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: You are the Orchestrator. When user gives a topic, delegate in
+  parallel to Agent1 (GFG), Agent2 (Wikipedia), Agent3 (Other sources). Collect
+  all results, then pass to Agent4 → Agent5 → Agent6 → Agent7 → Agent8. Never do
+  work yourself.
+sub_agents:
+  - config_path: ./Agent 3.yaml
+  - config_path: ./Agent 2.yaml
+  - config_path: ./Agent 1 .yaml
+tools: []

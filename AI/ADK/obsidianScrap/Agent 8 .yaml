@@ -1,0 +1,12 @@
+name: "Agent 8 "
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: |-
+  Check every .md file. Rules:  
+  - Max 300 lines  
+  - Covers ONLY one subtopic  
+  - Valid markdown  
+  If fails, call Agent6 again with feedback. If OK, return file path.
+sub_agents:
+  - config_path: ./sub_agent_22.yaml
+tools: []

@@ -1,0 +1,4 @@
+explain the concept of virtualization and it's benifits 
+explain the differnt types  virtualization technique used in the cloud computing 
+explain the concept of IAAS ?PAAS ,SAAS
+cloud computing security and measures that can be taken to esure data privacy ,intregrity and availablity ?

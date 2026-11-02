@@ -1,0 +1,103 @@
+1.p-put the deleted file
+
+2.r letter -replace the letter
+
+3.ce -delect the current word and insert mode
+
+4.cc -same does for the line
+
+5.c [no] -same as d
+
+6. ctrl+0 -backward
+
+7. ctrl+i -for ward
+
+8. % for matching speacil symbol,(,{,[
+
+9.:s/old/new/g  to substitute 'new' for 'old'. **
+
+10.:#,#s/old/new/g    where #,# are the line numbers of the of lines where the substitution is to be done.
+
+11.:%s/old/new/g      to change every occurrence in the whole file.
+
+12.:%s/old/new/gc     to find every occurrence in the whole file, with a prompt whether to substitute or not.
+
+13.To save the changes made to the text, type  :w FILENAME  the filename can be anythign the file that i have writting can be saved into a anothere file
+
+14. selct the text with V mode and press :  and w filename Vim will write the selected lines to the file
+
+15.:r !ls  reads the output of the ls command and puts it below the cursor.
+
+16. Type  o  to open a line BELOW the cursor and start Insert mode.
+
+     Type  O  to open a line ABOVE the cursor.
+
+
+
+17. Type  a  to insert text AFTER the cursor.
+
+     Type  A  to insert text after the end of the line.
+
+
+
+18. The  e  command moves to the end of a word.
+
+
+
+19. The  y  operator yanks (copies) text,  p  puts (pastes) it.
+
+
+
+20. Typing a capital  R  enters Replace mode until  <ESC>  is pressed.
+
+
+
+21. Typing ":set xxx" sets the option "xxx".  Some options are:
+
+        'ic' 'ignorecase'       ignore upper/lower case when searching
+
+        'is' 'incsearch'        show partial matches for a search phrase
+
+        'hls' 'hlsearch'        highlight all matching phrases
+
+     You can either use the long or the short option name.
+
+
+22. Prepend "no" to switch an option off:   :set noic
+
+23.MNEMONIC: (c)hange (i)nner (w)ord with <contents of (r)egister> named (a) "byiw
+
+pastes the content from the  (c)hange (i)nner (w)ord with <contents of (r)egister> named (a)  for deleting  "sdiw
+
+24.On the next line, enter insert mode and add today's date with
+
+     <C-r>=system('date')<enter>
+
+All calls to system are OS dependent, e.g. on Windows use
+
+the same can be achieved with :pu=system('date')
+
+      or, with fewer keystrokes :r!date
+
+25.into register(") named (a) put the (d)eletion from the cursor to the
+
+          LINE containing mark(') (a)
+
+gc → comment toggle (works with motions, e.g., gc3j comments 3 lines).
+
+
+
+ysiw" → wrap word in quotes ("word").
+
+
+
+cs"' → change surrounding " to '.
+
+
+
+ds" → delete surrounding quotes.
+
+S" → wraps the lines in quotes.
+S) → wraps the lines in parentheses.
+S} → wraps in braces.
+St → wraps in <t>...</t> HTML tags.

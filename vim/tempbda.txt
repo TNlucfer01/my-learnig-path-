@@ -1,0 +1,13 @@
+DC
+physical clock sync with ntp 
+message ordering paradigms 
+global state and snapshot algorithim 
+total order 
+
+
+BDA
+agreegate data model 
+cassandra arhitecture 
+distribution model 
+consistensy
+

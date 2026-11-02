@@ -1,0 +1,116 @@
+# Dependency Directories
+node_modules/
+bower_components/
+jspm_packages/
+.npm/
+.eslintcache
+.stylelintcache
+.node_repl_history
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv
+venv/
+ENV/
+
+# Java
+*.class
+*.log
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+target/
+.gradle/
+build/
+!gradle-wrapper.jar
+.mtj.tmp/
+*.swp
+*.lock
+bin/
+
+# Flutter / Dart
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+build/
+ios/.generated/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+lib/generated_plugin_registrant.dart
+pubspec.lock
+
+# C / C++
+*.o
+*.obj
+*.so
+*.a
+*.lib
+*.exe
+*.dll
+*.dylib
+*.out
+*.app
+
+# IDEs and Editors
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.iml
+*.iws
+.project
+.classpath
+.settings/
+.nbproject/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Nested Repositories (Ignore all .git directories in subfolders)
+**/.git/
+# But keep the root .git (handled by git itself, but this ensures nested ones are ignored)
+
+# Misc
+.metadata/
+*.deb
+*.bmp
+*.iss
+tmp/
+  
+# Specific exclusions from previous .gitignore if still needed
+javafx/
+keerthi-irrigation-system/
+naanmudhalvalan/
+intern_markitech/
+
+# Large files and external SDKs/caches (>100MB / non-repo binaries)
+RandD/binary_palindromes.csv
+Mobile/Flutter/
+Learn/go/pkg/

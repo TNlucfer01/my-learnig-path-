@@ -1,0 +1,9 @@
+name: Agent 5
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: 'Take each summary from Agent4. Create one .md file per subtopic.
+  Filename: "{{subtopic}}.md". Content: # {{subtopic}}\n\n{{summary
+  bullets}}\n\nTags: #topic #auto'
+sub_agents:
+  - config_path: ./Agent 6.yaml
+tools: []

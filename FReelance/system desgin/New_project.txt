@@ -1,0 +1,42 @@
+1. fault name ,product name ,customer detials ,product image ,stage name  with certain block 
+2. shelf count - dynamic 
+3. history needed for 2 months 
+
+
+
+
+
+the data  the customer needs are 
+1. name ,contact no , photo ,fault ,prooduct name   from customer details 
+2. shelf with table avaiable slot free whould show the color doesn't matter  
+3.  work completed 
+
+i need to know what are the stats aretere 
+1. getting  - start date 
+2. not fixed 
+3. fixing 
+4. finished  -  end dated
+
+the screen we are going to need are the folowing 
+1. history 
+2. home screen->booking  icon ->customer detials ->selct the free slot -> then finsh 
+3. slot  screen -> tabler  view with color white(free),green(work finished),red (occupied)  
+4. use c++n with  qtk 
+5. bin detials screen (history of the bin history ( need the detias of the customer ))
+
+
+conveyed these things to guna. at 5 pn
+
+Home page 
+1. logo ,name  ( top left )
+2. nav bar( ) 
+3. welcome text and booking icon 
+4. theme color 
+5. inventory (grid)(each  theme , image+ product detilas )  need clarification 
+6. product page (image at the top , right corener edit icon , Save bottm right, detials column )
+7. history page ()
+current themen are 
+#0F172A
+#2563EB
+#06B6D4
+#FFFFFF

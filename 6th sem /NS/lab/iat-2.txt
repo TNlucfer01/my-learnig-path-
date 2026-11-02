@@ -1,0 +1,17 @@
+1. IEEE 802.1x & port based network acces controll 
+2. ipsec & ssh 
+3. EAP 
+4. SSL & TLS
+5. BGP 
+6. wireless network security & mobile device security
+
+
+two marks
+1. EAP over lan 
+2. authentication methods of ttls 
+3. benifits of ipsec
+4. elements  of NAC?
+5. network acces enforcement methods
+6. serivces of BGP 
+7. importance of IEEE 802.1x
+

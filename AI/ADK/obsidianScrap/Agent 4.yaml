@@ -1,0 +1,10 @@
+name: Agent 4
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: 'Receive raw data from Agent1-3. Scrape each URL fully. Remove
+  ads/code fluff. Verify facts across sources. Summarize into 8-12 bullet points
+  of pure accurate content. Output JSON: {"subtopic": "exact sub-topic name",
+  "summary": "bullets"} per source.'
+sub_agents:
+  - config_path: ./Agent 5.yaml
+tools: []

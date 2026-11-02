@@ -1,0 +1,111 @@
+Stage 1 – Vim / Neovim Core
+
+Before plugins, you need to drive Neovim like a pro.
+
+Learn motions, operators, and commands (daw, ci", yap)
+
+Buffers vs. windows vs. tabs
+
+:h (help system) and navigation inside docs
+
+Learn macros & registers
+👉 Goal: you should be able to edit any text comfortably without plugins.
+
+
+
+Stage 2 – Lua Basics + Config Foundations
+
+Learn enough Lua: variables, functions, tables, modules
+done
+
+
+
+Write a minimal init.lua (set options, keymaps, autocommands)
+
+Explore Neovim Lua API (vim.opt, vim.keymap.set)
+👉 Goal: your Neovim works without init.vim, only Lua.
+
+Stage 3 – Plugin Management
+
+Pick one manager (lazy.nvim is the best today)
+
+Learn how lazy loading works
+
+Install simple plugins first (colorschemes, autopairs, commenting)
+👉 Goal: you can install/update/remove plugins confidently.
+
+Stage 4 – Editor Essentials
+
+Add quality-of-life features:
+
+File explorer → nvim-tree or neo-tree
+
+Fuzzy finder → telescope.nvim
+
+Statusline → lualine.nvim
+
+Treesitter → for highlighting + code structure
+
+Git integration → gitsigns.nvim
+👉 Goal: your Neovim now feels like a modern editor.
+
+Stage 5 – IDE Core
+
+Here you make it rival VS Code:
+
+LSP setup → nvim-lspconfig (get diagnostics, hover, rename, go-to-definition)
+
+Autocompletion → nvim-cmp + sources
+
+Snippets → luasnip + friendly-snippets
+
+Formatting/Linting → conform.nvim or null-ls.nvim
+👉 Goal: coding in Neovim is as smooth as VS Code IntelliSense.
+
+Stage 6 – Power Features
+
+Debugging → nvim-dap + dap-ui
+
+Testing → neotest
+
+Task running → integrate Make, npm scripts, or overseer.nvim
+👉 Goal: you can build, test, and debug without leaving Neovim.
+
+Stage 7 – UI / UX Polish
+
+Dashboard → alpha.nvim
+
+Keymap helper → which-key.nvim
+
+Notifications → nvim-notify
+
+Better tabs → bufferline.nvim
+
+Icons → nvim-web-devicons
+👉 Goal: clean, polished, and intuitive workflow.
+
+the folding operation
+
+
+
+Stage 8 – Advanced Customization
+
+Write custom Lua modules (organize config)
+
+Use autocommands & user commands
+
+Profile startup performance
+
+Lazy load & optimize plugins
+👉 Goal: your config feels like your own IDE framework.
+
+Stage 9 – Workflow Boosters
+
+Project/session management
+
+AI assistants (Copilot, Codeium, ChatGPT)
+
+Terminal integration (toggleterm.nvim)
+
+GitHub/GitLab workflow integrations
+👉 Goal: Neovim becomes your all-in-one coding cockpit.

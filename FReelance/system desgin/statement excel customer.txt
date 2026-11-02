@@ -1,0 +1,6 @@
+statement -> excel 
+customer -> formula in the puts
+
+
+bank statement-> excel 
+

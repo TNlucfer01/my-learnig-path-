@@ -1,0 +1,10 @@
+name: Agent 3
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: 'Search reliable sources OUTSIDE GFG & Wikipedia. Use google_search
+  tool with query: "{topic} -site:geeksforgeeks.org -site:wikipedia.org". Return
+  top 5 URLs from .edu, .org, official docs, or medium/dev.to. Include snippet.'
+sub_agents:
+  - config_path: ./Agent 4.yaml
+tools: []
+x`

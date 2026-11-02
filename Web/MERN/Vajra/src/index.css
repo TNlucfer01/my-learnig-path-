@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-vajra-black: #0A0A0A;
+  --color-vajra-black-light: #1A1A1A;
+  --color-vajra-gold: #D4AF37;
+  --color-vajra-gold-light: #F9D976;
+  --color-vajra-white: #F5F5F3;
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;h
+
+  --background-image-gold-gradient: linear-gradient(135deg,
+      #D4AF37 0%,
+      #F9D976 50%,
+      #D4AF37 100%);
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-vajra-black text-vajra-white font-sans scroll-smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-serif {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .gold-text-gradient {
+    @apply bg-gold-gradient bg-clip-text text-transparent;
+  }
+
+  .btn-gold {
+    @apply bg-gold-gradient text-vajra-black font-bold py-3 px-8 rounded-full transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-vajra-gold/20;
+  }
+
+  .btn-outline {
+    @apply border border-vajra-gold/30 text-vajra-white py-3 px-8 rounded-full transition-all hover:bg-vajra-gold/10 hover:border-vajra-gold;
+  }
+
+  .glass-card {
+    @apply bg-vajra-black-light border border-vajra-gold/20 backdrop-blur-md rounded-2xl transition-all hover:border-vajra-gold/50 hover:shadow-xl hover:shadow-vajra-gold/5;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-vajra-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-vajra-gold/20 rounded-full hover:bg-vajra-gold/40;
+}

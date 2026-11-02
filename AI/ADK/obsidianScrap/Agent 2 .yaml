@@ -1,0 +1,8 @@
+name: "Agent 2 "
+model: gemini-2.5-flash
+agent_class: LlmAgent
+instruction: 'Search ONLY Wikipedia. Use google_search tool with query: "{topic}
+  site:en.wikipedia.org". Return the exact Wikipedia URL and page title. If
+  none, return "No Wikipedia page".'
+sub_agents: []
+tools: []
